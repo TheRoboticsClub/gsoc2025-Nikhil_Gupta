@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/gsoc2025-Sakhineti_Praveena/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/gsoc2025-Sakhineti_Praveena/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-05-30T16:38:48+05:30</updated><id>http://localhost:4000/gsoc2025-Sakhineti_Praveena/feed.xml</id><title type="html">Sakhineti Praveena | JdeRobot x GSoC2025</title><subtitle>Sakhineti Praveena | JdeRobot x GSoC2025
+</subtitle><entry><title type="html">Community Bonding Week-2</title><link href="http://localhost:4000/gsoc2025-Sakhineti_Praveena/blog/2025/Community-Bonding-Week-2/" rel="alternate" type="text/html" title="Community Bonding Week-2" /><published>2025-05-30T00:00:00+05:30</published><updated>2025-05-30T00:00:00+05:30</updated><id>http://localhost:4000/gsoc2025-Sakhineti_Praveena/blog/2025/Community-Bonding-Week-2</id><content type="html" xml:base="http://localhost:4000/gsoc2025-Sakhineti_Praveena/blog/2025/Community-Bonding-Week-2/"><![CDATA[<h2 id="meeting-with-mentors">Meeting with Mentors</h2>
+
+<p>Started this week with the usual weekly sync up with the mentors, where we discussed various aspects of the project and my progress so far.  David encouraged me to play around a bit with the datasets, download, parse and implement inference, even if it’s simple at this stage.</p>
+
+<p>Sergio highlighted the importance of understanding the input and output formats of the models, and how crucial it is to be able to handle these effectively to extract meaningful metrics. He pointed out that knowing the format of the dataset and how they are passed to the models are crucial for the project over internal workings of each model layer. Santiago shared a helpful insight that any complex computer vision problem can be broken down into smaller subproblems of classification or regression. And finally, david addressed the elephant in the room — we all learned how to pronounce each other’s names correctly yay!</p>
+
+<h2 id="this-weeks-to-do">This Week’s To-Do</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Go through different dataset formats.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Download the datasets and parse them.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Use a portion of a COCO dataset to implement inference</li>
+</ul>
+
+<h2 id="progress">Progress</h2>
+
+<p>This week was all about exploring dataset formats and getting hands-on with them. I started with the COCO dataset and downloaded the 2017 validation images, training images, and the 2017 Train/Val annotations from the <a href="https://cocodataset.org/#download">official COCO website</a>. My goal was to understand how the dataset is structured, how the annotations are stored, and how to work with them effectively.</p>
+
+<p>I referred to the <a href="https://cocodataset.org/#format-data">COCO data format documentation</a> to dive deeper into the annotation structure. The main <code class="language-plaintext highlighter-rouge">annotations.json</code> file contains several top-level keys: <code class="language-plaintext highlighter-rouge">info</code>, <code class="language-plaintext highlighter-rouge">licenses</code>, <code class="language-plaintext highlighter-rouge">images</code>, <code class="language-plaintext highlighter-rouge">annotations</code>, and <code class="language-plaintext highlighter-rouge">categories</code>. Each object in the <code class="language-plaintext highlighter-rouge">annotations</code> list typically includes fields such as <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">image_id</code>, <code class="language-plaintext highlighter-rouge">category_id</code>, <code class="language-plaintext highlighter-rouge">bbox</code>, <code class="language-plaintext highlighter-rouge">area</code>, and <code class="language-plaintext highlighter-rouge">iscrowd</code>. The <code class="language-plaintext highlighter-rouge">bbox</code> is formatted as <code class="language-plaintext highlighter-rouge">[x, y, width, height]</code>, where <code class="language-plaintext highlighter-rouge">(x, y)</code> marks the top-left corner of the bounding box. To understand this better, I started mapping the annotations to their corresponding images and visualizing them with bounding boxes in a notebook called <a href="https://github.com/TheRoboticsClub/gsoc2025-Sakhineti_Praveena/tree/main/demos/coco.ipynb">coco.ipynb</a>.</p>
+
+<p>Initially, I redundantly mapped the annotations to images in <a href="https://github.com/TheRoboticsClub/gsoc2025-Sakhineti_Praveena/tree/main/demos/coco.ipynb">coco.ipynb</a>. But later, I discovered the official COCO API, which simplifies the process of loading, parsing, and visualizing annotations. It was a bit humbling to realize how much easier things could have been — but also a valuable lesson in finding the right tools. With this understanding, I proceeded to implement a simple object detection pipeline <a href="https://github.com/TheRoboticsClub/gsoc2025-Sakhineti_Praveena/tree/main/demos/detection_coco.ipynb">detection_coco.ipynb</a>, using a pretrained Faster R-CNN model from TorchVision. I ran inference on a small subset of 10 images from the COCO dataset to test how everything worked together, below is an image I populated inference for.</p>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/gsoc2025-Sakhineti_Praveena/assets/img/blog/2025-05-30-Community-Bonding-Week-2/objDetection-480.webp 480w,/gsoc2025-Sakhineti_Praveena/assets/img/blog/2025-05-30-Community-Bonding-Week-2/objDetection-800.webp 800w,/gsoc2025-Sakhineti_Praveena/assets/img/blog/2025-05-30-Community-Bonding-Week-2/objDetection-1400.webp 1400w," type="image/webp" sizes="95vw" />
+      
+    
+    <img src="/gsoc2025-Sakhineti_Praveena/assets/img/blog/2025-05-30-Community-Bonding-Week-2/objDetection.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+  </picture>
+
+  
+</figure>
+
+<p>Following that, I explored the Pascal VOC dataset. I downloaded the 2012 training and validation sets from the <a href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/">official VOC site</a>. Unlike COCO, VOC uses separate XML files for each image to store annotations. Each file contains object instances with tags like <code class="language-plaintext highlighter-rouge">&lt;name&gt;</code> for the class label, <code class="language-plaintext highlighter-rouge">&lt;difficult&gt;</code> (a flag to indicate whether the object should be considered in evaluation), and <code class="language-plaintext highlighter-rouge">&lt;bndbox&gt;</code>, which specifies the bounding box coordinates in the format <code class="language-plaintext highlighter-rouge">(xmin, ymin, xmax, ymax)</code>. I parsed and visualized several VOC images in a separate notebook  <a href="https://github.com/TheRoboticsClub/gsoc2025-Sakhineti_Praveena/tree/main/demos/PascalVoc.ipynb">PascalVoc.ipynb</a>. I also came across a useful <a href="https://github.com/shiyemin/voc2coco/blob/master/voc2coco.py">script</a> to convert VOC annotations to COCO format.</p>
+
+<p>In addition, I briefly explored the YOLO dataset format. YOLO annotations are stored in <code class="language-plaintext highlighter-rouge">.txt</code> files, one per image, with each line containing five values: <code class="language-plaintext highlighter-rouge">&lt;class_id&gt; &lt;x_center&gt; &lt;y_center&gt; &lt;width&gt; &lt;height&gt;</code>, all normalized between 0 and 1 relative to the image dimensions. The format is simple and optimized for real-time detection.</p>
+
+<p>Finally, towards the end of the week, I began exploring <code class="language-plaintext highlighter-rouge">Streamlit</code>, a lightweight framework for building data apps in Python. Although I didn’t get the chance to complete a working GUI yet, I managed to grasp the basics — which I plan to build on in the coming weeks as I move toward creating a user-friendly interface for visualizing model outputs.</p>
+
+<h2 id="gsoc25-jderobot-kickoff-meeting-2905">GSoC’25 JdeRobot Kickoff Meeting (29/05)</h2>
+
+<p>This week, I had the GSoC’25 kickoff meeting for JdeRobot, where I got to meet my fellow contributors, mentors, and the org admins. Pedro Arias began the session with a quick overview of JdeRobot, highlighting its main focus areas — robotics education, AI-driven robotics, and robot programming tools. It was inspiring to see how wide-ranging and impactful the organization’s work is.</p>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/gsoc2025-Sakhineti_Praveena/assets/img/blog/2025-05-30-Community-Bonding-Week-2/kickoffmeeting-480.webp 480w,/gsoc2025-Sakhineti_Praveena/assets/img/blog/2025-05-30-Community-Bonding-Week-2/kickoffmeeting-800.webp 800w,/gsoc2025-Sakhineti_Praveena/assets/img/blog/2025-05-30-Community-Bonding-Week-2/kickoffmeeting-1400.webp 1400w," type="image/webp" sizes="95vw" />
+      
+    
+    <img src="/gsoc2025-Sakhineti_Praveena/assets/img/blog/2025-05-30-Community-Bonding-Week-2/kickoffmeeting.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" data-zoomable="" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+  </picture>
+
+  
+</figure>
+
+<p>We then had a round of introductions, which was a great way to connect with like-minded people working on exciting and diverse projects. Following that, Pedro shared some helpful insights into the work methodologies we’ll be following, including contribution guidelines and evaluation timelines. David also gave us an important reminder to be proactive, not just during our weekly check-ins but throughout the week — by sharing timely updates, asking questions, and staying engaged. I will make sure to keep that in mind. He reassured us that no question is too small or silly. Overall it was a really helpful session to kick things off!</p>]]></content><author><name>Sakhineti Praveena</name></author><category term="blog" /><summary type="html"><![CDATA[Meeting with Mentors]]></summary></entry><entry><title type="html">Community Bonding Week-1</title><link href="http://localhost:4000/gsoc2025-Sakhineti_Praveena/blog/2025/Community-Bonding-Week-1/" rel="alternate" type="text/html" title="Community Bonding Week-1" /><published>2025-05-23T00:00:00+05:30</published><updated>2025-05-23T00:00:00+05:30</updated><id>http://localhost:4000/gsoc2025-Sakhineti_Praveena/blog/2025/Community-Bonding-Week-1</id><content type="html" xml:base="http://localhost:4000/gsoc2025-Sakhineti_Praveena/blog/2025/Community-Bonding-Week-1/"><![CDATA[<p>I am excited to be part of GSoC 2025! This week marks the official start of the program with <strong>community bonding period</strong>, and I couldn’t be more thrilled to dive in.</p>
+
+<p>My project, <strong>“Extend DetectionMetrics: GUI, CI Workflow, and Object Detection”</strong>,  will introduce me to perception model evaluation and give me hands on experience in the field of computer vision. <a href="https://github.com/JdeRobot/DetectionMetrics">DetectionMetrics</a> is a toolkit used for evaluating perception models across various frameworks and datasets. Ironically the latest version of Detectionmetrics currently supports image segmentation model evaluations, during my coding period my objective is to extend its functionality to object detection evaluation, build an interactive user interface and set up the CI workflow. This project is a perfect opportunity for me to gain hands-on experience in <strong>computer vision</strong>, and I’m eager to soak in all the learning that comes with it!</p>
+
+<hr />
+
+<h2 id="meeting-with-mentors">Meeting with Mentors</h2>
+
+<p>This week, I had my first meeting with my mentors. We spent time getting to know each other and discussing the initial steps of the project. We also reviewed the program’s logistics and clarified expectations moving forward. Communication was emphasized, with Slack chosen as the primary tool for day-to-day discussions and updates.</p>
+
+<p>The discussion also covered the initial steps for the project, such as diving deep and learning about different perception models, standard frameworks and datasets. I was also asked to set up this blog to document my journey through the project and for it to be easy for my mentors to keep a track of my progress.</p>
+
+<h2 id="this-weeks-to-do">This Week’s To-Do</h2>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Set up a blog website using Jekyll and GitHub Pages</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Read and analyze literature on perception models and datasets</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Write this first blog post documenting progress</li>
+</ul>
+
+<hr />
+
+<h2 id="progress-so-far">Progress So Far</h2>
+
+<p>I started the week by solidifying my foundation, I revisited my <strong>undergraduate computer vision coursework</strong>, focusing on:</p>
+
+<ul>
+  <li>Key concepts: <strong>Object Detection</strong>, <strong>Instance Segmentation</strong>, and <strong>Semantic Segmentation</strong></li>
+  <li>Core frameworks: <strong>PyTorch</strong> and <strong>TensorFlow</strong></li>
+  <li>Standard datasets: <strong>COCO</strong>, <strong>Pascal VOC</strong></li>
+  <li>Evaluation metrics: <strong>mAP</strong>, <strong>IoU</strong></li>
+</ul>
+
+<p>This foundational review has been super helpful in framing the work ahead and getting me ready for the development phase.</p>
+
+<p>Then I moved on to setting up this blog — drawing inspiration from past GSoC contributor blogs, I used <strong>Jekyll</strong> , a static site generator, along with <strong>GitHub Pages</strong> for hosting the website. I plan on uploading a blog every week with the progress, updates and learnings.</p>
+
+<hr />
+
+<p>I’m looking forward to continuing this journey, learning from my mentors, and contributing meaningfully to the open-source community.</p>]]></content><author><name>Sakhineti Praveena</name></author><category term="blog" /><summary type="html"><![CDATA[I am excited to be part of GSoC 2025! This week marks the official start of the program with community bonding period, and I couldn’t be more thrilled to dive in.]]></summary></entry></feed>
