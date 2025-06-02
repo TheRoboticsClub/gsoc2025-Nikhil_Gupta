@@ -2,33 +2,32 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+# subtitle: End-to-end autonomous vehicle driving based on text-based instructions
 
 profile:
   align: right
-  image: prof_pic.jpg
+  # image: jderobot_gsoc.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
 
+news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
-
-announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
-
-latest_posts:
-  enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+        {% include figure.liquid path="assets/img/JdeRobot_Gsoc_Logo.webp" class="img-fluid rounded mx-auto d-block" zoomable=true %}
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+# About Me
+
+👋 Hello and welcome!  
+I’m Sakhineti Praveena, and this blog documents my journey through Google Summer of Code 2025 with JdeRobot. This summer, I’ll be contributing to [DetectionMetrics](https://github.com/JdeRobot/DetectionMetrics/tree/master), an open-source toolkit for evaluating perception models across frameworks and datasets. My focus will be on extending its  functionality to detection models, building a more intuitive graphical interface, and establishing a robust CI workflow to streamline development.
+
+With the guidance of my mentors — David Pascual Hernández, Sergio Paniego and Santiago Montiel Marín — I’m excited to take on technical challenges, explore new tools, and grow as an open-source contributor.
+
+Each week, I’ll be sharing updates, experiences and reflections right here. Whether you're curious about the project or just want a peek into my GSoC journey — you’re in the right place.
+
+Thank you for your interest and feel free to reach out via [LinkedIn](https://www.linkedin.com/in/sakhinetipraveena/) if you’d like to connect. Here’s to a productive rewarding summer of code!
+
+
+
