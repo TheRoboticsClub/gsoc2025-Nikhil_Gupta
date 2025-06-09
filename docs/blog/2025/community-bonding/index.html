@@ -146,14 +146,14 @@
   <article class="post-content">
     
     <div id="markdown-content">
-      <p>Welcome to my Google Summer of Code 2025 journey! This week marks the beginning of the community bonding period at JdeRobot, and I'm incredibly excited to be working on "Robotics Academy: improvement of Gazebo scenarios and robot models". This project focuses on enhancing the visual realism, physical accuracy, and educational value of simulation environments in the JdeRobot Robotics Academy platform.</p>
+      <p>Welcome to my Google Summer of Code 2025 journey! This week marks the end of the community bonding period at JdeRobot, and I'm incredibly excited to be working on "Robotics Academy: improvement of Gazebo scenarios and robot models". This project focuses on enhancing the simulation environments in the JdeRobot Robotics Academy platform.</p>
 
       <p>The community bonding period has been productive, with meaningful interactions with my mentors and deep dives into the existing robotics infrastructure. Let me share what we've accomplished this week!</p>
 
       <h2 id="project-overview">Project Overview</h2>
-      <p>My project aims to significantly enhance two specific simulation scenarios within the JdeRobot Robotics Academy: <strong>Follow Line</strong> and <strong>Vacuum Cleaner</strong>. Currently, these educational exercises lack visual realism, accurate physical behavior, and proper ROS2 integration. The goal is to transform these scenarios into engaging, realistic learning environments that will benefit robotics students worldwide.</p>
+      <p>My project aims to significantly enhance simulation scenarios within the JdeRobot Robotics Academy mainly focusing upon migrating the scenarios and models from gazebo classic to gazebo harmonic. Currently, these educational exercises are all built upon gazebo classic. The goal is to transform these scenarios into engaging, realistic learning environments that will benefit robotics students worldwide.</p>
 
-      <p>Key improvements include refactoring URDF models with modular Xacro descriptions, upgrading environments with realistic textures and lighting, enhancing robot models for better physical dynamics, and ensuring compatibility with the latest Gazebo versions and ROS2 Humble.</p>
+<!--       <p>Key improvements include refactoring URDF models with modular Xacro descriptions, upgrading environments with realistic textures and lighting, enhancing robot models for better physical dynamics, and ensuring compatibility with the latest Gazebo versions and ROS2 Humble.</p> -->
 
       <h2 id="objectives">Objectives</h2>
       <ul class="task-list">
@@ -166,7 +166,7 @@
         <li class="task-list-item">
       <input type="checkbox" class="task-list-item-checkbox" disabled checked>Study the Robotics Infrastructure repository</li>
         <li class="task-list-item">
-      <input type="checkbox" class="task-list-item-checkbox" disabled checked>Analyze current Follow Line and Vacuum Cleaner scenarios</li>
+      <input type="checkbox" class="task-list-item-checkbox" disabled checked>Study URDF and SDF files and migration of scenarios</li>
         <li class="task-list-item">
       <input type="checkbox" class="task-list-item-checkbox" disabled checked>Document initial findings and setup development environment</li>
       </ul>
@@ -179,21 +179,20 @@
       <p>The second meeting was a focused session with my project mentors: <strong>Pedro Arias-Perez</strong>, <strong>Miguel Fernandez</strong>, and <strong>Prajyot Jadhav</strong>. We discussed the project timeline, technical requirements, and specific goals for each milestone. The mentors provided valuable insights into the current state of the Robotics Academy platform and shared their vision for the improvements we'll be implementing.</p>
 
       <h3 id="infrastructure-study">Robotics Infrastructure Analysis</h3>
-      <p>A significant portion of this week was dedicated to studying the Robotics Infrastructure repository. I explored the current implementation of both the Follow Line and Vacuum Cleaner scenarios, examining their directory structures, launch files, world files, and robot models.</p>
+      <p>A significant portion of this week was dedicated to studying the Robotics Infrastructure repository. I explored the current implementation of the scenarios, examining their directory structures, launch files, world files, and robot models.</p>
 
-      <p>Key findings from the infrastructure analysis:</p>
+<!--       <p>Key findings from the infrastructure analysis:</p>
       <ul>
         <li><strong>Follow Line Scenario:</strong> Currently uses a basic URDF model with limited visual detail. The track environment lacks realistic road textures and proper lighting setup. The ROS integration could benefit from modular Xacro descriptions.</li>
         <li><strong>Vacuum Cleaner Scenario:</strong> The Roomba model needs enhanced physical dynamics, and the environment would benefit from realistic furniture and obstacles. SLAM and navigation parameters require tuning for optimal performance.</li>
         <li><strong>Common Issues:</strong> Both scenarios need updates to align with ROS2 Humble best practices and compatibility with newer Gazebo versions like Fortress.</li>
-      </ul>
+      </ul> -->
 
       <h3 id="development-environment">Development Environment Setup</h3>
       <p>I've successfully set up my development environment with the necessary tools and dependencies:</p>
       <ul>
         <li>ROS2 Humble installation and workspace configuration</li>
-        <li>Gazebo Fortress setup for advanced simulation capabilities</li>
-        <li>Blender for 3D modeling and asset creation</li>
+        <li>Gazebo Harmonic and Classic setup for advanced simulation capabilities</li>
         <li>Docker environment for consistent development and testing</li>
         <li>RVIZ for visualization and debugging</li>
       </ul>
@@ -224,7 +223,7 @@
     <ul class="list-disc pl-8"></ul>
 
     <!-- Adds related posts to the end of an article -->
-    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+<!--     <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
     <p class="mb-2">Here are some more articles you might like to read next:</p>
   
 
@@ -255,7 +254,7 @@
   <li class="my-2">
     <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2025-Nikhil_Gupta/blog/2025/week8/">Week 8: July 17 ~ July 23</a>
   </li>
-
+ -->
 </div>
       
     </div>
