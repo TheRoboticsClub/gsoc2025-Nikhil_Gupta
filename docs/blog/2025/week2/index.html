@@ -127,8 +127,8 @@
     <div class="post">
 
       <header class="post-header">
-        <h1 class="post-title">Week 1: June 02 ~ June 09</h1>
-        <p class="post-meta">June 09, 2025</p>
+        <h1 class="post-title">Week 2: June 09 ~ June 16</h1>
+        <p class="post-meta">June 16, 2025</p>
         <p class="post-tags">
           <a href="/gsoc2025-Nikhil_Gupta/blog/2025"> <i class="fas fa-calendar fa-sm"></i> 2025 </a>
           ·
@@ -170,14 +170,12 @@
           <h2 id="objectives">Objectives</h2>
           <ul class="task-list">
             <li class="task-list-item">
-              <input type="checkbox" class="task-list-item-checkbox" disabled checked>Get familiar with migration links
-              and resources
-            </li>
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Correct apt repository error.
+            <!-- </li>
             <li class="task-list-item">
-              <input type="checkbox" class="task-list-item-checkbox" disabled checked>Verify marker_visual_loc exercise
-              already working in Gz Harmonic
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Setup 
             </li>
-            <li class="task-list-item">
+            <li class="task-list-item"> -->
               <input type="checkbox" class="task-list-item-checkbox" disabled checked>Set up local environment: world
               launcher for gz-classic and gz-harmonic
             </li>
@@ -189,10 +187,10 @@
               <input type="checkbox" class="task-list-item-checkbox" disabled checked>Complete Ackermann car model
               migration
             </li>
-            <li class="task-list-item">
+            <!-- <li class="task-list-item">
               <input type="checkbox" class="task-list-item-checkbox" disabled checked>Study file structure in Robotics
               Infrastructure repository
-            </li>
+            </li> -->
           </ul>
 
           <h2 id="execution">Execution</h2>
@@ -257,13 +255,13 @@
           <ul>
             <li>Examined existing migration patterns</li>
             <li>Identified completed vs. pending migration tasks</li>
-            <li>Studied launch file structures for both Gazebo versions</li>
+            <!-- <li>Studied launch file structures for both Gazebo versions</li> -->
             <li>Analyzed plugin migration approaches</li>
           </ul>
 
           <p>The repository structure revealed important migration patterns:</p>
           <ul>
-            <li>SDF version updates (1.5 → 1.8)</li>
+            <!-- <li>SDF version updates (1.5 → 1.8)</li> -->
             <li>Plugin system changes (libgazebo_ros → gz_ros2_control)</li>
             <li>Topic remapping strategies</li>
             <li>Launch file modernization</li>
@@ -290,21 +288,21 @@
             <li>Created controller configuration files</li>
           </ul>
 
-          <p><strong>3. Surface Properties Update</strong></p>
+          <!-- <p><strong>3. Surface Properties Update</strong></p>
           <ul>
             <li>Replaced empty <code class="language-plaintext highlighter-rouge">&lt;ode /&gt;</code> elements with
               <code class="language-plaintext highlighter-rouge">&lt;collide_bitmask&gt;</code></li>
             <li>Updated friction and contact parameters</li>
             <li>Ensured Harmonic physics compatibility</li>
-          </ul>
+          </ul> -->
 
-          <p><strong>4. Launch File Creation</strong></p>
+          <!-- <p><strong>3. Launch File Creation</strong></p>
           <ul>
             <li>Developed Harmonic-compatible launch files</li>
             <li>Integrated <code class="language-plaintext highlighter-rouge">ros_gz_sim</code> instead of <code
                 class="language-plaintext highlighter-rouge">gazebo_ros</code></li>
             <li>Added proper bridge configurations</li>
-          </ul>
+          </ul> -->
 
           <p><strong>Technical Details:</strong></p>
           <div class="language-xml highlighter-rouge">
@@ -387,7 +385,7 @@
             <li>Troubleshooting guides</li>
           </ul>
 
-          <p><strong>3. Additional Model Migrations</strong></p>
+          <!-- <p><strong>3. Additional Model Migrations</strong></p>
           <ul>
             <li>Begin migration of other vehicle models</li>
             <li>Expand to sensor-equipped models</li>
@@ -399,7 +397,7 @@
             <li>Integrate migrated models into main repository</li>
             <li>Create proper package structures</li>
             <li>Ensure CI/CD compatibility</li>
-          </ul>
+          </ul> -->
 
           <h2 id="infrastructure-insights">Infrastructure Insights</h2>
           <p>My study of the Robotics Infrastructure repository revealed important structural patterns:</p>
