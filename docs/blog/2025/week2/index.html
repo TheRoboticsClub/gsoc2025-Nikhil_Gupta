@@ -160,12 +160,9 @@
           <p>This week brought significant progress in resolving technical issues encountered during Week 1, along with new insights into the intricacies of Gazebo migration work. Let me share the developments, solutions implemented, and lessons learned throughout this productive week!</p>
 
           <h2 id="preliminaries">Preliminaries</h2>
-          <p>Following our successful Week 1 accomplishments - including the dual Gazebo environment setup, repository recovery, and initial F1 Ackermann car migration - Week 2 began with a clear focus on consolidation and expansion. In our weekly mentor meeting, we reviewed the progress made and identified the next phase of priorities, emphasizing the importance of thorough testing and validation of our migration work.
-            The primary focus shifted from initial setup and basic migration to comprehensive testing, issue resolution, and establishing robust migration workflows. With the foundational environment challenges resolved, we could now concentrate on the technical nuances of ensuring seamless compatibility between Gazebo Classic and Harmonic versions.</p>
+          <p>Following Week 1’s dual-Gazebo setup, repository recovery, and initial model migration, we began Week 2 by reviewing our environment and migration patterns in a mentor meeting. With basic compatibility secured, we shifted focus to systematic testing, issue resolution, and building robust workflows for Classic→Harmonic migrations.
 
-          <p>Our approach focuses on systematic migration from Gazebo Classic to Gazebo Harmonic, starting with simpler
-            scenarios and gradually working towards more complex implementations. The FollowLine exercise serves as our
-            primary test case due to its relative simplicity and existing migration work.</p>
+</p>
 
           <h2 id="objectives">Objectives</h2>
           <ul class="task-list">
@@ -275,7 +272,7 @@
 
           <p><strong>1. SDF Format Conversion</strong></p>
           <ul>
-            <li>Updated SDF version from 1.5 to 1.8</li>
+            <!-- <li>Updated SDF version from 1.5 to 1.8</li> -->
             <li>Modernized contact and friction elements</li>
             <li>Removed deprecated physics parameters</li>
           </ul>
@@ -283,9 +280,9 @@
           <p><strong>2. Plugin System Overhaul</strong></p>
           <ul>
             <li>Replaced <code class="language-plaintext highlighter-rouge">libgazebo_ros_ackermann_drive.so</code> with
-              <code class="language-plaintext highlighter-rouge">gz_ros2_control</code></li>
-            <li>Implemented ROS2 Control architecture</li>
-            <li>Created controller configuration files</li>
+              <code class="language-plaintext highlighter-rouge">gz-sim-ackermann-steering-system</code></li>
+            <li>added Gazebo Harmonic’s AckermannSteering system</li>
+            <!-- <li>Created controller configuration files</li> -->
           </ul>
 
           <!-- <p><strong>3. Surface Properties Update</strong></p>
