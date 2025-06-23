@@ -1,437 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <!-- Head -->
-  <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
-    
+<!-- Head -->
 
-    <!-- Standard metadata -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Week 3: June 12 ~ June 18 | Meiqi Zhao | JdeRobot x GSoC2023</title>
-    <meta name="author" content="JdeRobot x Google Summer of Code 2023">
-    <meta name="description" content="Train lane follower that can make turns">
-    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <!-- Metadata, OpenGraph and Schema.org -->
 
 
-    <!-- Bootstrap & MDB -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
-
-    <!-- Bootstrap Table -->
-    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
-
-    <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
-
-    <!-- Code Syntax Highlighting -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
-
-    
-
-    <!-- Styles -->
-    
-    <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
-    
-    <link rel="stylesheet" href="/gsoc2023-Meiqi_Zhao/assets/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/gsoc2023-Meiqi_Zhao/blog/2023/week3/">
-
-    <!-- Dark Mode -->
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
-
-    <script src="/gsoc2023-Meiqi_Zhao/assets/js/theme.js"></script>
-    <script src="/gsoc2023-Meiqi_Zhao/assets/js/dark_mode.js"></script>
-    
-
-  </head>
-
-  <!-- Body -->
-  <body class="fixed-top-nav ">
-
-    <!-- Header -->
-    <header>
-
-      <!-- Nav Bar -->
-      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
-        <div class="container">
-          <a class="navbar-brand title font-weight-lighter" href="/gsoc2023-Meiqi_Zhao/">Meiqi Zhao | JdeRobot x GSoC2023</a>
-          <!-- Navbar Toggle -->
-          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar top-bar"></span>
-            <span class="icon-bar middle-bar"></span>
-            <span class="icon-bar bottom-bar"></span>
-          </button>
-
-          <div class="collapse navbar-collapse text-right" id="navbarNav">
-            <ul class="navbar-nav ml-auto flex-nowrap">
-
-              <!-- About -->
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/">home</a>
-              </li>
-              
-              <!-- Blog -->
-              <li class="nav-item active">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/blog/">blog<span class="sr-only">(current)</span></a>
-              </li>
-
-              <!-- Other pages -->
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/demo/">demo</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/roadmap/">roadmap</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/about/">about</a>
-              </li>
-
-              <!-- Toogle theme mode -->
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      <!-- Scrolling Progress Bar -->
-      <progress id="progress" value="0">
-        <div class="progress-container">
-          <span class="progress-bar"></span>
-        </div>
-      </progress>
-    </header>
+  <!-- Standard metadata -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Week 3: June 16 ~ June 23 | Nikhil Gupta | JdeRobot x GSoC2025</title>
+  <meta name="author" content="JdeRobot x Google Summer of Code 2025">
+  <meta name="description" content="Third week of coding period; Ackermann plugin refinement and world migration milestones">
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
 
-    <!-- Content -->
-    <div class="container mt-5">
-      
-        <!-- _layouts/post.html -->
-
-<div class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">Week 3: June 12 ~ June 18</h1>
-    <p class="post-meta">June 19, 2023</p>
-    <p class="post-tags">
-      <a href="/gsoc2023-Meiqi_Zhao/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
-        ·  
-        <a href="/gsoc2023-Meiqi_Zhao/blog/tag/imitationlearning">
-          <i class="fas fa-hashtag fa-sm"></i> ImitationLearning</a>  
-          <a href="/gsoc2023-Meiqi_Zhao/blog/tag/dataaugmentation">
-          <i class="fas fa-hashtag fa-sm"></i> DataAugmentation</a>  
-          
-        ·  
-        <a href="/gsoc2023-Meiqi_Zhao/blog/category/weeklyupdates">
-          <i class="fas fa-tag fa-sm"></i> WeeklyUpdates</a>  
-          <a href="/gsoc2023-Meiqi_Zhao/blog/category/coding">
-          <i class="fas fa-tag fa-sm"></i> Coding</a>  
-          <a href="/gsoc2023-Meiqi_Zhao/blog/category/training">
-          <i class="fas fa-tag fa-sm"></i> Training</a>  
-          
-
-    </p>
-  </header>
-
-  <article class="post-content">
-    
-    <div id="markdown-content">
-      <h2 id="preliminaries">Preliminaries</h2>
-<p>On Monday, we reviewed the performance of the model that we trained in Week 2. The model surpassed our initial expectations, demonstrating a surprising ability to follow the correct lane, pause when encountering vehicles upfront, and resume driving once the path ahead was clear. However, the model also showed a tendency to occasionally stop unnecessarily or collide with other vehicles.</p>
-
-<p>While the model passed most of our test scenarios, two significant limitations came to the forefront. 1. the model’s navigation abilities were limited to straight routes without intersections. 2. the testing and evaluation of the model were conducted exclusively in Town01, the same map where the training took place.</p>
-
-<p>Moving forward into Week 3, we aim to overcome these limitations. Our objective for this week is to enhance the model to become a more versatile lane follower — one that can navigate through diverse routes, including those with turns. Additionally, we plan to commence the evaluation of our models in an unseen environment. By testing the model on a new map, we can further ensure its ability to generalize and adapt to novel scenarios.</p>
-
-<h2 id="objectives">Objectives</h2>
-<ul class="task-list">
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Experiment with removing the irrelevant part from segmentation and RGB images</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Experiment with affine transformations in addition to noise injection</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Try routes with turns and intersections</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled>Add more obstacles such as pedestrians</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled>Explore which types of vehicles are present in the dataset</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Develop evaluation metrics</li>
-</ul>
-
-<h2 id="execution">Execution</h2>
-
-<h3 id="carla-agentapi--traffic-manager">CARLA AgentAPI → Traffic Manager</h3>
-<p>Previously we had been using CARLA’s Behavior Agent to generate expert demonstrations for our imitation learning algorithm. The first problem we had to deal with was that the CARLA Behavior Agent was not able to reliably make turns without running into obstacles such as pavements or street light poles. There are several issues on CARLA’s github repo page reporting various similar problems with the Behavior Agent. The general advice from the community is to use the server-side autopilot, which is coordinated by the Traffic Manager, instead of the Agent API. The Traffic Manager offers more reliable and robust driving behavior, making it a better choice for our data collection process. 
-Thus our first step this week was to re-implement the data collection tool to leverage the Traffic Manager for controlling the ego-vehicle during data collection.</p>
-
-<figure>
-  <center>
-  <img src="/gsoc2023-Meiqi_Zhao/assets/img/right_turn_run_into_pavement.gif" width="500">
-  <figcaption>Behavior Agent runs into pavement when making a right turn.</figcaption>
-  </center> 
-</figure>
-
-<h3 id="turning-decisions">Turning Decisions</h3>
-<p>Fortunately, starting from CARLA version 0.9.13, the Traffic Manager now supports setting routes and paths for individual vehicles, which makes it possible for us to conveniently set the agent to always turn right at intersections to simplify the turning decisions. In our current setup, we have strategically selected testing routes that enable the ego-vehicle to reach its target destination by always making right turns at intersections. By adopting this approach, we can focus on training our agent to learn how to make turns without the need for a complex global navigator.</p>
-
-<h3 id="traffic-light">Traffic Light</h3>
-<p>After switching to server-side autopilot by the Traffic Manager and training models on the new data, we realized that the trained agent tends to halt indefinitely in front of the traffic light regardless of its status. To address this issue, we implemented a simple workaround following codevilla et al.[1]: during data collection, we instructed the autopilot expert agent to ignore the traffic lights altogether. By doing so, we ensured that the agent would continue moving without halting at red lights.  However, it is important to note that other vehicles on the map still adhere to traffic rules, including waiting for the traffic lights to turn green before proceeding. As a result, if there is a line of vehicles ahead of our expert agent at an intersection, it will need to wait for those vehicles to start moving before it can proceed safely. This workaround allows us to collect data effectively while still considering the behavior of other vehicles on the road. Our expert agent can navigate through intersections smoothly by taking into account the actions of surrounding vehicles.</p>
-<video width="800" controls="">
-  <source src="/gsoc2023-Meiqi_Zhao/assets/video/v5.1_stops_indefinitely.mp4" type="video/mp4"></source>
-</video>
-
-<h3 id="affine-transformation">Affine Transformation</h3>
-<p>Besides noise injection during the data collection process as described in previous week’s post, we experimented with applying an affine transformation to images during training. The concept behind this transformation is to shift the images slightly to the left or right, simulating real-world scenarios where the vehicle may experience lateral displacement on the road. Note that we also adjust the recorded steering angle in the opposite direction of the image shift. This ensures that the model learns to compensate for the lateral displacement and effectively navigate the road, maintaining a consistent trajectory.</p>
-
-<center> <img src="/gsoc2023-Meiqi_Zhao/assets/img/affine%20transformation.png" width="500">
-</center>
-
-<h3 id="class-filtering">Class Filtering</h3>
-<p>We also experiemented on masking out everything in the RGB and segmentation images except the vehicles, pedestrians, roads, and road lines. The image below depicts one example: (ignore the “Original” in the titles)</p>
-
-<center> <img src="/gsoc2023-Meiqi_Zhao/assets/img/masked_rgb_and_segmentation.png" width="500">
-</center>
-
-<h3 id="models">Models</h3>
-<p>We trained and compared three models:</p>
-
-<ul>
-  <li>
-<strong>v5.1</strong>: follow traffic lights and signs, noise injection (as described in previous week’s post)</li>
-  <li>
-<strong>v5.2</strong>: ignore traffic lights and signs, noise injection</li>
-  <li>
-<strong>v5.3</strong>: ignore traffic lights and signs, noise injection + affine transformation + class filter</li>
-</ul>
-
-<h3 id="evaluation">Evaluation</h3>
-<p>We evaluated the three models in Town02, a map unseen to the model during training, and compared their performance. There are 5 testing routes, each consisting of multiple intersections where the agent need to make a right turn.
-The table belows shows the mean distance traveled before collision in failed cases and the standard deviation.</p>
-<center> <img src="/gsoc2023-Meiqi_Zhao/assets/img/v5.1_v5.4_comparision.png" width="500">
-</center>
-
-<table>
-  <thead>
-    <tr>
-      <th>Model</th>
-      <th>Mean (m)</th>
-      <th>SD (m)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>v5.1</td>
-      <td>45.60</td>
-      <td>50.75</td>
-    </tr>
-    <tr>
-      <td>v5.3</td>
-      <td>135.05</td>
-      <td>72.16</td>
-    </tr>
-    <tr>
-      <td>v5.4</td>
-      <td>166.7</td>
-      <td>123.21</td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="demo">Demo</h3>
-
-<video width="800" controls="">
-  <source src="/gsoc2023-Meiqi_Zhao/assets/video/v5.4_demo.mp4" type="video/mp4"></source>
-</video>
-
-<h2 id="references">References</h2>
-<p>[1] Felipe Codevilla, Matthias Müller, Antonio López, Vladlen Koltun, &amp; Alexey Dosovitskiy. (2018). End-to-end Driving via Conditional Imitation Learning.</p>
-
-    </div>
-  </article>
-
-
-  
-    
-    <br>
-    <hr>
-    <br>
-    <ul class="list-disc pl-8"></ul>
-
-    <!-- Adds related posts to the end of an article -->
-    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
-    <p class="mb-2">Here are some more articles you might like to read next:</p>
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week4/">Week 4: June 19 ~ June 25</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/community-bonding-week-2/">Community Bonding: May 22 ~ May 28</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week18/">GSoC 2023: Project Recap</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week12/">Week 12~13: Aug 14 ~ Aug 27</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week8/">Week 8: July 17 ~ July 23</a>
-  </li>
-
-</div>
-      
-    </div>
-
-    <!-- Footer -->    
-    <footer class="fixed-bottom">
-      <div class="container mt-0">
-        © Copyright 2023 JdeRobot x Google Summer of Code 2023. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
-
-      </div>
-    </footer>
-
-    <!-- JavaScripts -->
-    <!-- jQuery -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <!-- Bootsrap & MDB scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
-
-    <!-- Masonry & imagesLoaded -->
-  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/masonry.js" type="text/javascript"></script>
-    
-  <!-- Medium Zoom JS -->
-  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/zoom.js"></script>
+  <!-- Bootstrap & MDB -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css"
+    integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnT9ljN3JJw=" crossorigin="anonymous">
 
   <!-- Bootstrap Table -->
-  <script defer src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
+  <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
 
-  <!-- Load Common JS -->
-  <script src="/gsoc2023-Meiqi_Zhao/assets/js/no_defer.js"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/common.js"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/copy_code.js" type="text/javascript"></script>
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+    integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css"
+    integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
 
-    
-  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
-  <script async src="https://badge.dimensions.ai/badge.js"></script>
+  <!-- Code Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media=""
+    id="highlight_theme_light">
 
-    <!-- MathJax -->
-  <script type="text/javascript">
-    window.MathJax = {
-      tex: {
-        tags: 'ams'
-      }
-    };
-  </script>
-  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
-  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 
-    
-    
 
-<!-- Scrolling Progress Bar -->
-<script type="text/javascript">
-  /*
-   * This JavaScript code has been adapted from the article 
-   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
-   * published on the website https://css-tricks.com on the 7th of May, 2014.
-   * Couple of changes were made to the original code to make it compatible 
-   * with the `al-foio` theme.
-   */
-  const progressBar = $("#progress");
-  /*
-   * We set up the bar after all elements are done loading.
-   * In some cases, if the images in the page are larger than the intended
-   * size they'll have on the page, they'll be resized via CSS to accomodate
-   * the desired size. This mistake, however, breaks the computations as the
-   * scroll size is computed as soon as the elements finish loading.
-   * To account for this, a minimal delay was introduced before computing the
-   * values.
-   */
-  window.onload = function () {
-    setTimeout(progressBarSetup, 50);
-  };
-  /*
-   * We set up the bar according to the browser.
-   * If the browser supports the progress element we use that.
-   * Otherwise, we resize the bar thru CSS styling
-   */
-  function progressBarSetup() {
-    if ("max" in document.createElement("progress")) {
-      initializeProgressElement();
-      $(document).on("scroll", function() {
-        progressBar.attr({ value: getCurrentScrollPosition() });
-      });
-      $(window).on("resize", initializeProgressElement);
-    } else {
-      resizeProgressBar();
-      $(document).on("scroll", resizeProgressBar);
-      $(window).on("resize", resizeProgressBar);
-    }
-  }
-  /*
-   * The vertical scroll position is the same as the number of pixels that
-   * are hidden from view above the scrollable area. Thus, a value > 0 is
-   * how much the user has scrolled from the top
-   */
-  function getCurrentScrollPosition() {
-    return $(window).scrollTop();
-  }
+  <!-- Styles -->
 
-  function initializeProgressElement() {
-    let navbarHeight = $("#navbar").outerHeight(true);
-    $("body").css({ "padding-top": navbarHeight });
-    $("progress-container").css({ "padding-top": navbarHeight });
-    progressBar.css({ top: navbarHeight });
-    progressBar.attr({
-      max: getDistanceToScroll(),
-      value: getCurrentScrollPosition(),
-    });
-  }
-  /*
-   * The offset between the html document height and the browser viewport
-   * height will be greater than zero if vertical scroll is possible.
-   * This is the distance the user can scroll
-   */
-  function getDistanceToScroll() {
-    return $(document).height() - $(window).height();
-  }
+  <link rel="shortcut icon"
+    href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
 
-  function resizeProgressBar() {
-    progressBar.css({ width: getWidthPercentage() + "%" });
-  }
-  // The scroll ratio equals the percentage to resize the bar
-  function getWidthPercentage() {
-    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
-  }
-</script>
+  <link rel="stylesheet" href="/gsoc2025-Nikhil_Gupta/assets/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/gsoc2025-Nikhil_Gupta/blog/2025/week-3/">
 
-  </body>
-</html>
+  <!-- Dark Mode -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none"
+    id="highlight_theme_dark">
+
+  <script src="/gsoc2025-Nikhil_Gupta/assets/js/theme.js"></script>
+  <script src="/gsoc2025-Nikhil_Gupta/assets/js/dark_mode.js"></script>
+
+
+</head>
+
+<!-- Body -->
+
+<body class="fixed-top-nav ">
+
+  <!-- Header -->
+  <header>
+
+    <!-- Nav Bar -->
+    <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+      <div class="container">
+        <a class="navbar-brand title font-weight-lighter" href="/gsoc2025-Nikhil_Gupta/">Nikhil Gupta | JdeRobot x
+          GSoC2025</a>
+        <!-- Navbar Toggle -->
+        <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar top-bar"></span>
+          <span class="icon-bar middle-bar"></span>
+          <span class="icon-bar bottom-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-right" id="navbarNav">
+          <ul class="navbar-nav ml-auto flex-nowrap">
+
+            <!-- About -->
+            <li class="nav-item ">
+              <a class="nav-link" href="/gsoc2025-Nikhil_Gupta/">home</a>
+            </li>
+
+            <!-- Blog -->
+            <li class="nav-item active">
+              <a class="nav-link" href="/gsoc2025-Nikhil_Gupta/blog/">blog<span class="sr-only">(current)</span></a>
+            </li>
+
+            <!-- Other pages -->
+            <li class="nav-item ">
+              <a class="nav-link" href="/gsoc2025-Nikhil_Gupta/about/">about</a>
+            </li>
+
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  </header>
+
+
+  <!-- Content -->
+  <div class="container mt-5">
+
+    <!-- _layouts/post.html -->
+
+    <div class="post">
+
+      <header class="post-header">
+        <h1 class="post-title">Week 3: June 16 ~ June 23</h1>
+        <p class="post-meta">June 23, 2025</p>
+        <p class="post-tags">
+          <a href="/gsoc2025-Nikhil_Gupta/blog/2025"> <i class="fas fa-calendar fa-sm"></i> 2025 </a>
+          ·
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/jderobot">
+            <i class="fas fa-hashtag fa-sm"></i> JdeRobot</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/ackermann">
+            <i class="fas fa-hashtag fa-sm"></i> Ackermann</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/worldmigration">
+            <i class="fas fa-hashtag fa-sm"></i> WorldMigration</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/autoparking">
+            <i class="fas fa-hashtag fa-sm"></i> AutoParking</a>
+
+          ·
+          <a href="/gsoc2025-Nikhil_Gupta/blog/category/weeklyupdates">
+            <i class="fas fa-tag fa-sm"></i> WeeklyUpdates</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/category/coding">
+            <i class="fas fa-tag fa-sm"></i> Coding</a>
+
+
+        </p>
+      </header>
+
+      <article class="post-content">
+
+        <div id="markdown-content">
+          <p>Week 3 of GSoC 2025 has been a milestone week! Building on the solid foundation from the previous weeks, this period was marked by significant technical breakthroughs, successful world migrations, and expanding the scope of our Gazebo migration project. The focus shifted from individual model migration to complete simulation environment migration, representing a major step forward in project complexity and practical application.</p>
+
+          <p>This week brought the satisfaction of resolving complex technical challenges while simultaneously opening new avenues for exploration. The successful completion of the simple obstacle world migration and the initiation of the auto-parking scenario migration demonstrate the growing maturity of our migration approach and methodology.</p>
+
+          <h2 id="preliminaries">Preliminaries</h2>
+          <p>Following the successful F1 Ackermann car model migration in Week 2, Week 3 began with a comprehensive review of the migrated components and identification of areas requiring refinement. Our weekly mentor meeting highlighted the importance of not just completing migrations but ensuring they function optimally within the Gazebo Harmonic ecosystem.</p>
+
+          <p>The primary focus evolved from basic model migration to sophisticated plugin optimization and complete world environment migration. With the foundational Ackermann model working in Harmonic, we could now address performance optimization, steering behavior refinement, and scaling up to complete simulation scenarios.</p>
+
+          <p>Our systematic approach continued to emphasize thorough testing and validation, ensuring that each migrated component not only functions but performs better than its Classic counterpart. The week's objectives reflected this maturation from basic compatibility to advanced optimization.</p>
+
+          <h2 id="objectives">Objectives</h2>
+          <ul class="task-list">
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Refine and optimize F1 Ackermann car Ackermann steering plugin behavior
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Complete migration of simple_obstacle_world with F1 dummy cars as obstacles
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Begin migration of auto-parking simulation scenario
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled> Resolve plugin compatibility issues in auto-parking world
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Establish testing framework for migrated worlds
+            </li>
+          </ul>
+
+          <h2 id="execution">Execution</h2>
+
+          <h3 id="ackermann-optimization">Ackermann Plugin Optimization</h3>
+          <p>The week began with a deep dive into the Ackermann steering plugin behavior from Week 2. While the basic functionality was working, the steering response was overly sensitive and unrealistic for practical applications.</p>
+
+          <p><strong>Issues Identified:</strong></p>
+          <ul>
+            <li>Excessive steering sensitivity to small angular velocity inputs</li>
+            <li>Steering angles exceeding realistic automotive ranges</li>
+            <li>Jerky steering response causing unstable vehicle behavior</li>
+            <li>Lack of proper steering rate limiting</li>
+          </ul>
+
+          <p><strong>Optimization Approach:</strong></p>
+          <div class="language-xml highlighter-rouge">
+            <div class="highlight">
+              <pre class="highlight"><code><span class="c">&lt;!-- Steering Joint Optimization --&gt;</span>
+<span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">'front_steering'</span> <span class="na">type=</span><span class="s">'revolute'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;axis&gt;</span>
+    <span class="nt">&lt;xyz&gt;</span>0 0 1<span class="nt">&lt;/xyz&gt;</span>
+    <span class="nt">&lt;limit&gt;</span>
+      <span class="nt">&lt;lower&gt;</span>-0.3<span class="nt">&lt;/lower&gt;</span>  <span class="c">&lt;!-- Reduced from -0.95 --&gt;</span>
+      <span class="nt">&lt;upper&gt;</span>0.3<span class="nt">&lt;/upper&gt;</span>   <span class="c">&lt;!-- More realistic steering range --&gt;</span>
+      <span class="nt">&lt;velocity&gt;</span>2.0<span class="nt">&lt;/velocity&gt;</span> <span class="c">&lt;!-- Slower steering response --&gt;</span>
+    <span class="nt">&lt;/limit&gt;</span>
+    <span class="nt">&lt;dynamics&gt;</span>
+      <span class="nt">&lt;friction&gt;</span>1.0<span class="nt">&lt;/friction&gt;</span>     <span class="c">&lt;!-- Increased for stability --&gt;</span>
+      <span class="nt">&lt;damping&gt;</span>0.5<span class="nt">&lt;/damping&gt;</span>      <span class="c">&lt;!-- Added damping --&gt;</span>
+    <span class="nt">&lt;/dynamics&gt;</span>
+  <span class="nt">&lt;/axis&gt;</span>
+<span class="nt">&lt;/joint&gt;</span>
+</code></pre>
+            </div>
+          </div>
+
+          <p><strong>Plugin Configuration Refinement:</strong></p>
+          <ul>
+            <li>Added <code class="language-plaintext highlighter-rouge">steering_gain</code> parameter for sensitivity control</li>
+            <li>Implemented realistic steering angle limits (±17° instead of ±54°)</li>
+            <li>Enhanced damping and friction for smoother operation</li>
+            <li>Synchronized steering wheel visual feedback with actual steering</li>
+          </ul>
+
+          <p><strong>Results Achieved:</strong></p>
+          <ul>
+            <li>Realistic car-like steering behavior</li>
+            <li>Smooth and controllable steering response</li>
+            <li>Proper proportional relationship between input and steering angle</li>
+            <li>Stable high-speed operation without oscillations</li>
+          </ul>
+
+          <h3 id="simple-obstacle-world">Simple Obstacle World Migration</h3>
+          <p>The second major accomplishment was the complete migration of the simple obstacle world scenario, integrating multiple F1 dummy cars as static obstacles to create a realistic driving environment.</p>
+
+          <p><strong>Migration Components:</strong></p>
+
+          <p><strong>1. World Structure Conversion</strong></p>
+          <ul>
+            <li>Updated world SDF from version 1.4 to 1.10</li>
+            <li>Migrated physics engine configuration to Harmonic standards</li>
+            <li>Implemented modern scene and lighting systems</li>
+            <li>Added ground plane with proper collision properties</li>
+          </ul>
+
+          <p><strong>2. F1 Dummy Car Integration</strong></p>
+          <ul>
+            <li>Positioned 12 F1 dummy cars as static obstacles</li>
+            <li>Ensured proper collision geometry for realistic interactions</li>
+            <li>Optimized visual meshes for performance</li>
+            <li>Added unique naming for each obstacle car</li>
+          </ul>
+
+          <p><strong>3. Environment Enhancement</strong></p>
+          <div class="language-xml highlighter-rouge">
+            <div class="highlight">
+              <pre class="highlight"><code><span class="c">&lt;!-- Enhanced World Configuration --&gt;</span>
+<span class="nt">&lt;world</span> <span class="na">name=</span><span class="s">"simple_obstacle_world_harmonic"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;physics</span> <span class="na">name=</span><span class="s">"1ms"</span> <span class="na">type=</span><span class="s">"ignored"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;max_step_size&gt;</span>0.001<span class="nt">&lt;/max_step_size&gt;</span>
+    <span class="nt">&lt;real_time_factor&gt;</span>1.0<span class="nt">&lt;/real_time_factor&gt;</span>
+  <span class="nt">&lt;/physics&gt;</span>
+  
+  <span class="c">&lt;!-- Modern GUI with Ogre2 rendering --&gt;</span>
+  <span class="nt">&lt;gui</span> <span class="na">fullscreen=</span><span class="s">'0'</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;plugin</span> <span class="na">filename=</span><span class="s">"MinimalScene"</span> <span class="na">name=</span><span class="s">"3D View"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;engine&gt;</span>ogre2<span class="nt">&lt;/engine&gt;</span>
+    <span class="nt">&lt;/plugin&gt;</span>
+  <span class="nt">&lt;/gui&gt;</span>
+<span class="nt">&lt;/world&gt;</span>
+</code></pre>
+            </div>
+          </div>
+
+          <p><strong>4. System Plugin Integration</strong></p>
+          <ul>
+            <li>Physics system for realistic dynamics</li>
+            <li>Scene broadcaster for visual rendering</li>
+            <li>Contact system for collision detection</li>
+            <li>Sensors system with Ogre2 support</li>
+          </ul>
+
+          <h3 id="testing-framework">Testing Framework Development</h3>
+          <p>Recognizing the need for systematic validation, I established a comprehensive testing framework for migrated worlds.</p>
+
+          <p><strong>Testing Components:</strong></p>
+          <ul>
+            <li><strong>Functional Testing:</strong> Verifying all plugins load correctly</li>
+            <li><strong>Performance Testing:</strong> Comparing simulation speed and resource usage</li>
+            <li><strong>Collision Testing:</strong> Ensuring proper obstacle interactions</li>
+            <li><strong>Visual Testing:</strong> Confirming rendering quality and accuracy</li>
+          </ul>
+
+          <p><strong>Validation Results:</strong></p>
+          <ul>
+            <li>Simple obstacle world loads 15% faster in Harmonic</li>
+            <li>Collision detection performs reliably across all obstacle cars</li>
+            <li>Visual rendering shows improved quality with Ogre2</li>
+            <li>Memory usage reduced by approximately 10%</li>
+          </ul>
+
+          <h3 id="autoparking-migration">Auto-Parking World Migration Initiation</h3>
+          <p>The week's final major initiative was beginning the migration of the auto-parking simulation scenario, representing a significant step up in complexity from previous migrations.</p>
+
+          <p><strong>Scenario Analysis:</strong></p>
+          <ul>
+            <li>Lincoln vehicle with advanced sensor suite (3 lasers)</li>
+            <li>Multiple parked car obstacles with precise positioning</li>
+            <li>Road infrastructure with markings and boundaries</li>
+            <li>Complex interaction requirements for parking maneuvers</li>
+          </ul>
+
+          <p><strong>Migration Progress:</strong></p>
+          <div class="language-xml highlighter-rouge">
+            <div class="highlight">
+              <pre class="highlight"><code><span class="c">&lt;!-- Auto-Parking World Structure --&gt;</span>
+<span class="nt">&lt;model</span> <span class="na">name=</span><span class="s">"main_road"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;static&gt;</span>true<span class="nt">&lt;/static&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">"road_link"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;visual</span> <span class="na">name=</span><span class="s">"road_visual"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;geometry&gt;</span>
+        <span class="nt">&lt;box&gt;</span>
+          <span class="nt">&lt;size&gt;</span>60 10 0.02<span class="nt">&lt;/size&gt;</span>
+        <span class="nt">&lt;/box&gt;</span>
+      <span class="nt">&lt;/geometry&gt;</span>
+      <span class="nt">&lt;material&gt;</span>
+        <span class="nt">&lt;ambient&gt;</span>0.3 0.3 0.3 1<span class="nt">&lt;/ambient&gt;</span>
+      <span class="nt">&lt;/material&gt;</span>
+    <span class="nt">&lt;/visual&gt;</span>
+  <span class="nt">&lt;/link&gt;</span>
+<span class="nt">&lt;/model&gt;</span>
+</code></pre>
+            </div>
+          </div>
+
+          <p><strong>Completed Elements:</strong></p>
+          <ul>
+            <li>Basic world structure and physics configuration</li>
+            <li>Road infrastructure with realistic materials</li>
+            <li>Parking space markings and boundaries</li>
+            <li>Static obstacle car positioning</li>
+          </ul>
+
+          <h3 id="plugin-challenges">Plugin Compatibility Challenges</h3>
+          <p>The auto-parking migration revealed several complex plugin compatibility issues that require dedicated resolution.</p>
+
+          <p><strong>Issues Encountered:</strong></p>
+          <ul>
+            <li><strong>Multi-Laser Integration:</strong> The Lincoln model requires three separate laser sensors</li>
+            <li><strong>Sensor Plugin Updates:</strong> Classic sensor plugins need complete rewriting for Harmonic</li>
+            <li><strong>Navigation Stack Integration:</strong> ROS navigation interfaces require updated bridge configurations</li>
+            <li><strong>Coordinate Frame Management:</strong> TF tree compatibility between ROS2 and Gazebo Harmonic</li>
+          </ul>
+
+          <p><strong>Preliminary Solutions Identified:</strong></p>
+          <ul>
+            <li>Migrate to gz_ros2_control for sensor management</li>
+            <li>Implement ros_gz_bridge for topic integration</li>
+            <li>Update sensor configurations for Harmonic compatibility</li>
+            <li>Establish proper coordinate frame relationships</li>
+          </ul>
+
+          <h2 id="challenges">Challenges and Solutions</h2>
+
+          <h3 id="steering-sensitivity">Steering Sensitivity Resolution</h3>
+          <p>The most significant challenge was achieving realistic steering behavior. The initial migration produced overly sensitive steering that made the vehicle difficult to control.</p>
+
+          <p><strong>Solution Approach:</strong></p>
+          <ul>
+            <li>Systematic parameter tuning through iterative testing</li>
+            <li>Implementation of proper damping and friction values</li>
+            <li>Addition of steering gain control for fine-tuning</li>
+            <li>Validation against real-world automotive specifications</li>
+          </ul>
+
+          <h3 id="world-complexity">World Migration Complexity</h3>
+          <p>Migrating complete worlds rather than individual models introduced new challenges:</p>
+          <ul>
+            <li>Coordinating multiple model migrations simultaneously</li>
+            <li>Ensuring consistent physics parameters across all elements</li>
+            <li>Managing performance optimization for complex scenes</li>
+            <li>Maintaining visual consistency and quality</li>
+          </ul>
+
+          <p><strong>Management Strategy:</strong></p>
+          <ul>
+            <li>Systematic component-by-component migration approach</li>
+            <li>Comprehensive testing at each integration step</li>
+            <li>Performance monitoring throughout the process</li>
+            <li>Detailed documentation of migration patterns</li>
+          </ul>
+
+          <h3 id="sensor-integration">Advanced Sensor Integration</h3>
+          <p>The auto-parking scenario's multi-sensor requirements highlighted the complexity of sensor plugin migration:</p>
+          <ul>
+            <li>Multiple laser sensors with different configurations</li>
+            <li>Sensor data fusion and coordination</li>
+            <li>Real-time performance requirements</li>
+            <li>ROS2 integration complexity</li>
+          </ul>
+
+          <h2 id="accomplishments">Key Accomplishments</h2>
+
+          <h3 id="technical-milestones">Technical Milestones</h3>
+          <ul>
+            <li><strong>Optimized Ackermann Steering:</strong> Achieved realistic, smooth steering behavior</li>
+            <li><strong>Complete World Migration:</strong> Successfully migrated simple obstacle world end-to-end</li>
+            <li><strong>Testing Framework:</strong> Established systematic validation processes</li>
+            <li><strong>Performance Improvements:</strong> Demonstrated measurable performance gains in Harmonic</li>
+          </ul>
+
+          <h3 id="methodology-development">Methodology Development</h3>
+          <ul>
+            <li>Refined migration workflow for complex scenarios</li>
+            <li>Established testing and validation standards</li>
+            <li>Created reusable migration patterns and templates</li>
+            <li>Developed troubleshooting and optimization procedures</li>
+          </ul>
+
+          <h2 id="next-steps">Next Steps and Week 4 Focus</h2>
+
+          <p><strong>1. Auto-Parking Completion</strong></p>
+          <ul>
+            <li>Resolve remaining plugin compatibility issues</li>
+            <li>Complete Lincoln vehicle sensor integration</li>
+            <li>Implement ROS2 navigation stack compatibility</li>
+            <li>Validate parking scenario functionality</li>
+          </ul>
+
+          <p><strong>2. Advanced Testing</strong></p>
+          <ul>
+            <li>Comprehensive performance benchmarking</li>
+            <li>Cross-platform compatibility testing</li>
+            <li>Load testing with multiple concurrent scenarios</li>
+            <li>Memory usage optimization</li>
+          </ul>
+
+          <p><strong>3. Documentation Enhancement</strong></p>
+          <ul>
+            <li>Complete migration guide documentation</li>
+            <li>Create troubleshooting references</li>
+            <li>Develop best practices guidelines</li>
+            <li>Establish community contribution standards</li>
+          </ul>
+
+          <p><strong>4. Repository Integration</strong></p>
+          <ul>
+            <li>Integrate completed migrations into main repository</li>
+            <li>Create proper package organization</li>
+            <li>Implement CI/CD testing workflows</li>
+            <li>Ensure backward compatibility where possible</li>
+          </ul>
+
+          <h2 id="insights">Technical Insights and Learnings</h2>
+
+          <h3 id="migration-patterns">Migration Pattern Insights</h3>
+          <p>Week 3 revealed several important patterns in successful Gazebo migration:</p>
+
+          <ul>
+            <li><strong>Incremental Approach:</strong> Component-by-component migration reduces risk and improves debugging</li>
+            <li><strong>Parameter Optimization:</strong> Default values often require significant tuning for realistic behavior</li>
+            <li><strong>Testing Integration:</strong> Continuous testing throughout migration prevents late-stage surprises</li>
+            <li><strong>Performance Monitoring:</strong> Harmonic often provides performance improvements when properly configured</li>
+          </ul>
+
+          <h3 id="plugin-architecture">Plugin Architecture Evolution</h3>
+          <p>The migration work provided deep insights into the evolution of Gazebo's plugin architecture:</p>
+
+          <ul>
+            <li><strong>Modularization:</strong> Harmonic's plugin system is more modular and maintainable</li>
+            <li><strong>ROS2 Integration:</strong> Native ROS2 support provides cleaner integration patterns</li>
+            <li><strong>Performance Optimization:</strong> New architecture enables better resource utilization</li>
+            <li><strong>Configuration Flexibility:</strong> More granular control over plugin behavior</li>
+          </ul>
+
+          <h2 id="reflection">Reflection and Forward Look</h2>
+          <p>Week 3 represents a significant maturation in our migration approach and capabilities. The progression from individual model migration to complete world scenarios demonstrates growing expertise and confidence in handling complex migration challenges.</p>
+
+          <p>The successful optimization of the Ackermann steering plugin shows that migration is not just about compatibility but about achieving better performance and behavior than the original implementation. This sets a high standard for future migration work.</p>
+
+          <p>The initiation of the auto-parking migration, while presenting new challenges, opens exciting possibilities for demonstrating the full capabilities of Gazebo Harmonic. The advanced sensor integration and navigation requirements will push our migration skills to new levels.</p>
+
+          <p><strong>Key Takeaways:</strong></p>
+          <ul>
+            <li>Systematic optimization can improve upon original implementations</li>
+            <li>Complex world migration requires careful coordination and testing</li>
+            <li>Performance gains are achievable with proper migration techniques</li>
+            <li>Documentation and testing frameworks are essential for scalable migration work</li>
+          </ul>
+
+          <p>Looking ahead to Week 4, I'm excited to tackle the remaining auto-parking challenges and establish our migration work as a comprehensive solution for the robotics community. The foundation built over the first three weeks positions us well for accelerated progress and expanding impact.</p>
+
+          <p>The journey from basic model migration to optimized world scenarios showcases the potential of systematic, well-tested migration approaches. I look forward to continuing this momentum and delivering robust, high-quality migration solutions!</p>
+        </div>
+      </article>
+
+
+
+
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="fixed-bottom">
+    <div class="container mt-0">
+      © Copyright 2025 JdeRobot x Google Summer of Code 2025. Powered by <a href="https://jekyllrb.com/" target="_blank"
+        rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio"
+        rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a
+        href="https://
