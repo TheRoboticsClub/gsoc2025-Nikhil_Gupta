@@ -153,8 +153,9 @@
 
       <article class="post-content">
 
+        
         <div id="markdown-content">
-          <p>Week 4 of the GSoC coding period was all about polishing our earlier migrations and digging deeper into the auto-parking scenario. After smoothing out minor glitches in the obstacle-avoidance world and the FollowLine exercise, I turned my attention to migrating the bateria_prius_3laser.world and the accompanying prius_ackermann_3laser model. While the world file is now loading in Gazebo Harmonic, I’m still chasing down a few static objects that didn’t make it in—and parked cars are tripping over collision-geometry errors.</p>
+          <p>Week 4 of the GSoC coding period was all about polishing our earlier migrations and digging deeper into the auto-parking scenario. After smoothing out minor glitches in the obstacle-avoidance world and the FollowLine exercise, I turned my attention to migrating the bateria_prius_3laser.world and the accompanying prius_ackermann_3laser model. While the world file is now loading in Gazebo Harmonic, I'm still chasing down a few static objects that didn't make it in—and parked cars are tripping over collision-geometry errors.</p>
 
           <h2 id="preliminaries">Preliminaries</h2>
           <p>At the end of Week 3 we had a working obstacle world, a basic auto-parking stub, and an optimized Ackermann plugin. Before tackling new migrations, I revisited the obstacle-avoidance world and the FollowLine exercise to ensure they remained stable under our latest Gazebo Harmonic updates.</p>
@@ -168,316 +169,152 @@
               <input type="checkbox" class="task-list-item-checkbox" disabled checked> Fix remaining issues in the FollowLine exercise
             </li>
             <li class="task-list-item">
-              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Migrate Worlds/bateria_prius_3laser.world to gazebo harmonic
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Migrate Worlds/bateria_prius_3laser.world to SDF 1.8
             </li>
             <li class="task-list-item">
               <input type="checkbox" class="task-list-item-checkbox" disabled> Migrate the CustomRobots/ackermann_cars/models/prius_ackermann_3laser model
             </li>
             <li class="task-list-item">
               <input type="checkbox" class="task-list-item-checkbox" disabled> Identify and resolve missing objects and collision-geometry errors
-
-
             </li>
           </ul>
 
           <h2 id="execution">Execution</h2>
 
-          <h3 id="Obstacle Avoidance">Obstacle Avoidance World Refinement</h3>
+          <h3 id="obstacle-avoidance">Obstacle Avoidance World Refinement</h3>
+          <p>The week began with polishing our existing migrations to ensure they remained stable and consistent with our latest Gazebo Harmonic updates.</p>
+
+          <p><strong>Refinement Tasks:</strong></p>
           <ul>
             <li>Corrected a mismatched collision tag on one of the dummy cars</li>
+            <li>Harmonized lighting and ground-plane material settings</li>
             <li>Verified obstacle positions still line up with our path tests</li>
-            <!-- <li>Lack of proper steering rate limiting</li> -->
           </ul>
 
-          <!-- <p><strong>Optimization Approach:</strong></p>
-          <div class="language-xml highlighter-rouge">
-            <div class="highlight">
-              <pre class="highlight"><code><span class="c">&lt;!-- Steering Joint Optimization --&gt;</span>
-<span class="nt">&lt;joint</span> <span class="na">name=</span><span class="s">'front_steering'</span> <span class="na">type=</span><span class="s">'revolute'</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;axis&gt;</span>
-    <span class="nt">&lt;xyz&gt;</span>0 0 1<span class="nt">&lt;/xyz&gt;</span>
-    <span class="nt">&lt;limit&gt;</span>
-      <span class="nt">&lt;lower&gt;</span>-0.3<span class="nt">&lt;/lower&gt;</span>  <span class="c">&lt;!-- Reduced from -0.95 --&gt;</span>
-      <span class="nt">&lt;upper&gt;</span>0.3<span class="nt">&lt;/upper&gt;</span>   <span class="c">&lt;!-- More realistic steering range --&gt;</span>
-      <span class="nt">&lt;velocity&gt;</span>2.0<span class="nt">&lt;/velocity&gt;</span> <span class="c">&lt;!-- Slower steering response --&gt;</span>
-    <span class="nt">&lt;/limit&gt;</span>
-    <span class="nt">&lt;dynamics&gt;</span>
-      <span class="nt">&lt;friction&gt;</span>1.0<span class="nt">&lt;/friction&gt;</span>     <span class="c">&lt;!-- Increased for stability --&gt;</span>
-      <span class="nt">&lt;damping&gt;</span>0.5<span class="nt">&lt;/damping&gt;</span>      <span class="c">&lt;!-- Added damping --&gt;</span>
-    <span class="nt">&lt;/dynamics&gt;</span>
-  <span class="nt">&lt;/axis&gt;</span>
-<span class="nt">&lt;/joint&gt;</span>
-</code></pre>
-            </div> -->
-          </div>
+          <h3 id="followline-fixes">FollowLine Exercise Fixes</h3>
+          <p>The FollowLine exercise required several updates to maintain compatibility with our latest migration patterns and ensure smooth operation in both Classic and Harmonic environments.</p>
 
-          <p><strong>Plugin Configuration Refinement:</strong></p>
+          <p><strong>Update Components:</strong></p>
           <ul>
-            <li>Implemented realistic steering angle limits (±17° instead of ±54°)</li>
-            <li>Enhanced damping and friction for smoother operation</li>
-            <li>Synchronized steering wheel visual feedback with actual steering</li>
+            <li>Updated topic remappings for the new /cmd_vel interface</li>
+            <li>Removed deprecated plugin references</li>
+            <li>Confirmed the robot follows the line in both classic and harmonic launches</li>
           </ul>
 
-          <p><strong>Results Achieved:</strong></p>
+          <h3 id="autoparking-world">Auto-Parking World Migration</h3>
+          <p>The major focus of Week 4 was tackling the complex auto-parking scenario migration, which represents a significant step up in complexity from our previous work.</p>
+
+          <p><strong>World Structure Conversion:</strong></p>
           <ul>
-            <li>Realistic car-like steering behavior</li>
-            <li>Smooth and controllable steering response</li>
-            <li>Proper proportional relationship between input and steering angle</li>
-            <li>Stable high-speed operation without oscillations</li>
+            <li>Converted bateria_prius_3laser.world to SDF 1.8: updated physics, lighting, and scene definitions</li>
+            <li>Ensured ground plane and road markings render correctly in Harmonic</li>
+            <li>Spun up the world—static scenery loads, but a handful of props (curbs, signs) are still missing</li>
           </ul>
 
-          <h3 id="FollowLine Exercise Fixes">FollowLine Exercise Fixes</h3>
-          <p>The second major accomplishment was the complete migration of the simple obstacle world scenario, integrating multiple F1 dummy cars as static obstacles to create a realistic driving environment.</p>
+          <h3 id="prius-model-migration">Prius Ackermann 3-Laser Model Migration</h3>
+          <p>The Prius model migration involved updating a sophisticated vehicle model with multiple laser sensors and advanced control systems.</p>
 
-          <p><strong>Migration Components:</strong></p>
-
-          <p><strong>1. World Structure Conversion</strong></p>
+          <p><strong>Model Updates:</strong></p>
           <ul>
-            <li>Migrated physics engine configuration to Harmonic standards</li>
-            <li>Implemented modern scene and lighting systems</li>
-            <li>Added ground plane with proper collision properties</li>
-          </ul>
-
-          <p><strong>2. F1 Dummy Car Integration</strong></p>
-          <ul>
-            <li>Positioned 12 F1 dummy cars as static obstacles</li>
-            <li>Ensured proper collision geometry for realistic interactions</li>
-            <li>Optimized visual meshes for performance</li>
-          </ul>
-
-          <!-- <p><strong>3. Environment Enhancement</strong></p>
-          <div class="language-xml highlighter-rouge">
-            <div class="highlight">
-              <pre class="highlight"><code><span class="c">&lt;!-- Enhanced World Configuration --&gt;</span>
-<span class="nt">&lt;world</span> <span class="na">name=</span><span class="s">"simple_obstacle_world_harmonic"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;physics</span> <span class="na">name=</span><span class="s">"1ms"</span> <span class="na">type=</span><span class="s">"ignored"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;max_step_size&gt;</span>0.001<span class="nt">&lt;/max_step_size&gt;</span>
-    <span class="nt">&lt;real_time_factor&gt;</span>1.0<span class="nt">&lt;/real_time_factor&gt;</span>
-  <span class="nt">&lt;/physics&gt;</span>
-  
-  <span class="c">&lt;!-- Modern GUI with Ogre2 rendering --&gt;</span>
-  <span class="nt">&lt;gui</span> <span class="na">fullscreen=</span><span class="s">'0'</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;plugin</span> <span class="na">filename=</span><span class="s">"MinimalScene"</span> <span class="na">name=</span><span class="s">"3D View"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;engine&gt;</span>ogre2<span class="nt">&lt;/engine&gt;</span>
-    <span class="nt">&lt;/plugin&gt;</span>
-  <span class="nt">&lt;/gui&gt;</span>
-<span class="nt">&lt;/world&gt;</span>
-</code></pre>
-            </div> 
-          </div>-->
-
-          <!-- <p><strong>3. System Plugin Integration</strong></p>
-          <ul>
-            <li>Physics system for realistic dynamics</li>
-            <li>Scene broadcaster for visual rendering</li>
-            <li>Contact system for collision detection</li>
-            <li>Sensors system with Ogre2 support</li>
-          </ul> -->
-
-          <!-- <h3 id="testing-framework">Testing Framework Development</h3>
-          <p>Recognizing the need for systematic validation, I established a comprehensive testing framework for migrated worlds.</p>
-
-          <p><strong>Testing Components:</strong></p>
-          <ul>
-            <li><strong>Functional Testing:</strong> Verifying all plugins load correctly</li>
-            <li><strong>Performance Testing:</strong> Comparing simulation speed and resource usage</li>
-            <li><strong>Collision Testing:</strong> Ensuring proper obstacle interactions</li>
-            <li><strong>Visual Testing:</strong> Confirming rendering quality and accuracy</li>
-          </ul>
-
-          <p><strong>Validation Results:</strong></p>
-          <ul>
-            <li>Simple obstacle world loads 15% faster in Harmonic</li>
-            <li>Collision detection performs reliably across all obstacle cars</li>
-            <li>Visual rendering shows improved quality with Ogre2</li>
-            <li>Memory usage reduced by approximately 10%</li>
-          </ul> -->
-
-          <h3 id="autoparking-migration">Auto-Parking World Migration Initiation</h3>
-          <p>The week's final major initiative was beginning the migration of the auto-parking simulation scenario, representing a significant step up in complexity from previous migrations.</p>
-
-          <p><strong>Scenario Analysis:</strong></p>
-          <ul>
-            <li>Lincoln vehicle with advanced sensor suite (3 lasers)</li>
-            <li>Multiple parked car obstacles with precise positioning</li>
-            <li>Road infrastructure with markings and boundaries</li>
-            <li>Complex interaction requirements for parking maneuvers</li>
-          </ul>
-
-          <!-- <p><strong>Migration Progress:</strong></p>
-          <div class="language-xml highlighter-rouge">
-            <div class="highlight">
-              <pre class="highlight"><code><span class="c">&lt;!-- Auto-Parking World Structure --&gt;</span>
-<span class="nt">&lt;model</span> <span class="na">name=</span><span class="s">"main_road"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;static&gt;</span>true<span class="nt">&lt;/static&gt;</span>
-  <span class="nt">&lt;link</span> <span class="na">name=</span><span class="s">"road_link"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;visual</span> <span class="na">name=</span><span class="s">"road_visual"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;geometry&gt;</span>
-        <span class="nt">&lt;box&gt;</span>
-          <span class="nt">&lt;size&gt;</span>60 10 0.02<span class="nt">&lt;/size&gt;</span>
-        <span class="nt">&lt;/box&gt;</span>
-      <span class="nt">&lt;/geometry&gt;</span>
-      <span class="nt">&lt;material&gt;</span>
-        <span class="nt">&lt;ambient&gt;</span>0.3 0.3 0.3 1<span class="nt">&lt;/ambient&gt;</span>
-      <span class="nt">&lt;/material&gt;</span>
-    <span class="nt">&lt;/visual&gt;</span>
-  <span class="nt">&lt;/link&gt;</span>
-<span class="nt">&lt;/model&gt;</span>
-</code></pre>
-            </div> 
-          </div> -->
-
-          <p><strong>Completed Elements:</strong></p>
-          <ul>
-            <li>Basic world structure and physics configuration</li>
-            <li>Road infrastructure with realistic materials</li>
-            <li>Parking space markings and boundaries</li>
-            <li>Static obstacle car positioning</li>
-          </ul>
-
-          <h3 id="plugin-challenges">Plugin Compatibility Challenges</h3>
-          <p>The auto-parking migration revealed several complex plugin compatibility issues that require dedicated resolution.</p>
-
-          <p><strong>Issues Encountered:</strong></p>
-          <ul>
-            <li><strong>Multi-Laser Integration:</strong> The Lincoln model requires three separate laser sensors</li>
-            <li><strong>Sensor Plugin Updates:</strong> Classic sensor plugins need complete rewriting for Harmonic</li>
-            <li><strong>Navigation Stack Integration:</strong> ROS navigation interfaces require updated bridge configurations</li>
-            <li><strong>Coordinate Frame Management:</strong> TF tree compatibility between ROS2 and Gazebo Harmonic</li>
-          </ul>
-
-          <p><strong>Preliminary Solutions Identified:</strong></p>
-          <ul>
-            <li>Migrate to gz_ros2_control for sensor management</li>
-            <li>Implement ros_gz_bridge for topic integration</li>
-            <li>Update sensor configurations for Harmonic compatibility</li>
-            <li>Establish proper coordinate frame relationships</li>
+            <li>Updated the model's SDF: bumped version, modernized &lt;visual&gt; / &lt;collision&gt; tags, and attached three laser sensors</li>
+            <li>Applied our AckermannSteering plugin configuration (as in Week 2)</li>
+            <li>World launches without fatal errors, but the parked-car instances refuse to load due to invalid collision geometry</li>
           </ul>
 
           <h2 id="challenges">Challenges and Solutions</h2>
 
-          <h3 id="steering-sensitivity">Steering Sensitivity Resolution</h3>
-          <p>The most significant challenge was achieving realistic steering behavior. The initial migration produced overly sensitive steering that made the vehicle difficult to control.</p>
+          <h3 id="missing-objects">Missing Objects in World</h3>
+          <p>One of the significant challenges encountered was that some scene elements weren't appearing in the migrated world.</p>
 
-          <p><strong>Solution Approach:</strong></p>
+          <p><strong>Root Cause:</strong></p>
           <ul>
-            <li>Systematic parameter tuning through iterative testing</li>
-            <li>Implementation of proper damping and friction values</li>
-            <li>Addition of steering gain control for fine-tuning</li>
-            <li>Validation against real-world automotive specifications</li>
+            <li>Some scene elements weren't appearing because their &lt;include&gt; URIs pointed to Classic-style paths</li>
           </ul>
 
-          <h3 id="world-complexity">World Migration Complexity</h3>
-          <p>Migrating complete worlds rather than individual models introduced new challenges:</p>
+          <p><strong>Solution:</strong></p>
           <ul>
-            <li>Coordinating multiple model migrations simultaneously</li>
-            <li>Ensuring consistent physics parameters across all elements</li>
-            <li>Managing performance optimization for complex scenes</li>
-            <li>Maintaining visual consistency and quality</li>
+            <li>Switched to model:// URIs, verified file names, and re-exported the missing meshes</li>
           </ul>
 
-          <p><strong>Management Strategy:</strong></p>
+          <h3 id="collision-geometry">Parked Cars Collision Geometry Errors</h3>
+          <p>The most complex challenge was resolving collision geometry issues with the parked car models.</p>
+
+          <p><strong>Issue Encountered:</strong></p>
           <ul>
-            <li>Systematic component-by-component migration approach</li>
-            <li>Comprehensive testing at each integration step</li>
-            <li>Performance monitoring throughout the process</li>
-            <li>Detailed documentation of migration patterns</li>
+            <li>Gazebo Harmonic rejects several parked-car collision meshes with messages about "unsupported geometry type"</li>
           </ul>
 
-          <h3 id="sensor-integration">Advanced Sensor Integration</h3>
-          <p>The auto-parking scenario's multi-sensor requirements highlighted the complexity of sensor plugin migration:</p>
+          <p><strong>Solution Strategy:</strong></p>
           <ul>
-            <li>Multiple laser sensors with different configurations</li>
-            <li>Sensor data fusion and coordination</li>
-            <li>Real-time performance requirements</li>
-            <li>ROS2 integration complexity</li>
+            <li>Converted those meshes to simple convex hulls (via Blender export)</li>
+            <li>Updated &lt;collision&gt;&lt;mesh&gt; blocks</li>
+            <li>Re-scaled appropriately for proper physics simulation</li>
           </ul>
 
-          <!-- <h2 id="accomplishments">Key Accomplishments</h2>
-
-          <h3 id="technical-milestones">Technical Milestones</h3>
-          <ul>
-            <li><strong>Optimized Ackermann Steering:</strong> Achieved realistic, smooth steering behavior</li>
-            <li><strong>Complete World Migration:</strong> Successfully migrated simple obstacle world end-to-end</li>
-            <li><strong>Testing Framework:</strong> Established systematic validation processes</li>
-            <li><strong>Performance Improvements:</strong> Demonstrated measurable performance gains in Harmonic</li>
-          </ul>
-
-          <h3 id="methodology-development">Methodology Development</h3>
-          <ul>
-            <li>Refined migration workflow for complex scenarios</li>
-            <li>Established testing and validation standards</li>
-            <li>Created reusable migration patterns and templates</li>
-            <li>Developed troubleshooting and optimization procedures</li>
-          </ul> -->
-
-          <h2 id="next-steps">Next Steps and Week 4 Focus</h2>
-
-          <p><strong>Auto-Parking Completion</strong></p>
-          <ul>
-            <li>Resolve remaining plugin compatibility issues</li>
-            <li>Complete Lincoln vehicle sensor integration</li>
-            <li>Implement ROS2 navigation stack compatibility</li>
-            <li>Validate parking scenario functionality</li>
-          </ul>
-
-          <!-- <p><strong>2. Advanced Testing</strong></p>
-          <ul>
-            <li>Comprehensive performance benchmarking</li>
-            <li>Cross-platform compatibility testing</li>
-            <li>Load testing with multiple concurrent scenarios</li>
-            <li>Memory usage optimization</li>
-          </ul>
-
-          <p><strong>3. Documentation Enhancement</strong></p>
-          <ul>
-            <li>Complete migration guide documentation</li>
-            <li>Create troubleshooting references</li>
-            <li>Develop best practices guidelines</li>
-            <li>Establish community contribution standards</li>
-          </ul>
-
-          <p><strong>4. Repository Integration</strong></p>
-          <ul>
-            <li>Integrate completed migrations into main repository</li>
-            <li>Create proper package organization</li>
-            <li>Implement CI/CD testing workflows</li>
-            <li>Ensure backward compatibility where possible</li>
-          </ul> -->
-
-          <h2 id="insights">Technical Insights and Learnings</h2>
+          <h2 id="technical-insights">Technical Insights and Learnings</h2>
 
           <h3 id="migration-patterns">Migration Pattern Insights</h3>
-          <p>Week 3 revealed several important patterns in successful Gazebo migration:</p>
+          <p>Week 4 revealed several important insights about managing complex world migrations:</p>
 
           <ul>
-            <li><strong>Incremental Approach:</strong> Component-by-component migration reduces risk and improves debugging</li>
-            <li><strong>Parameter Optimization:</strong> Default values often require significant tuning for realistic behavior</li>
-            <li><strong>Testing Integration:</strong> Continuous testing throughout migration prevents late-stage surprises</li>
+            <li><strong>Include paths matter:</strong> Even a single wrong URI can silently drop an entire model</li>
+            <li><strong>Collision simplification:</strong> Complex meshes often need convex-hull fallbacks for Harmonic compatibility</li>
+            <li><strong>Incremental validation:</strong> Spawning one model at a time helps isolate failures quickly</li>
           </ul>
 
-          <!-- <h3 id="plugin-architecture">Plugin Architecture Evolution</h3>
-          <p>The migration work provided deep insights into the evolution of Gazebo's plugin architecture:</p>
+          <h3 id="workflow-optimization">Workflow Optimization</h3>
+          <p>The migration work highlighted the importance of systematic approaches:</p>
 
           <ul>
-            <li><strong>Modularization:</strong> Harmonic's plugin system is more modular and maintainable</li>
-            <li><strong>ROS2 Integration:</strong> Native ROS2 support provides cleaner integration patterns</li>
-            <li><strong>Performance Optimization:</strong> New architecture enables better resource utilization</li>
-            <li><strong>Configuration Flexibility:</strong> More granular control over plugin behavior</li>
-          </ul> -->
+            <li><strong>Component-by-component imports:</strong> Prevent "everything fails at once" scenarios</li>
+            <li><strong>Automated URI checks:</strong> Can catch missing assets before launch</li>
+            <li><strong>Mesh pre-processing scripts:</strong> Save time when converting large numbers of collision files</li>
+          </ul>
+
+          <h2 id="next-steps">Next Steps and Week 5 Focus</h2>
+
+          <p><strong>1. Complete Auto-Parking Migration</strong></p>
+          <ul>
+            <li>Finish importing all static props into the auto-parking world</li>
+            <li>Resolve the remaining collision geometry errors on the parked-car models</li>
+            <li>Run end-to-end parking maneuvers to validate sensor and plugin integrations</li>
+          </ul>
+
+          <p><strong>2. Performance Analysis</strong></p>
+          <ul>
+            <li>Begin performance benchmarking to compare Classic vs. Harmonic for this scenario</li>
+            <li>Optimize resource usage for complex multi-sensor simulations</li>
+            <li>Validate real-time performance requirements</li>
+          </ul>
+
+          <p><strong>3. Integration Testing</strong></p>
+          <ul>
+            <li>Test sensor data integration with ROS2 navigation stack</li>
+            <li>Validate multi-laser sensor coordination</li>
+            <li>Ensure proper coordinate frame relationships</li>
+          </ul>
 
           <h2 id="reflection">Reflection and Forward Look</h2>
           <p>Week 4 was a reality check: migrating full simulation scenarios exposes deeper file-organization and geometry challenges than single models. That said, each hurdle teaches us how to build more robust migration tooling—and sets us up to finalize the auto-parking world in Week 5.</p>
 
+          <p>The progression from simple model migrations to complex world scenarios continues to reveal new layers of complexity in the Gazebo migration process. However, the systematic approach we've developed and the lessons learned from each challenge are building a solid foundation for comprehensive migration solutions.</p>
+
           <p><strong>Key Takeaways:</strong></p>
           <ul>
-            <li>Verify every <include> and <mesh> URI in your world file.</li>
-            <li>Complex world migration requires careful coordination and testing</li>
-            <li>Simplify collision meshes early</li>
-            <li>Keep your branch history tidy: small, focused commits make rollbacks painless.</li>
+            <li>Verify every &lt;include&gt; and &lt;mesh&gt; URI in your world file</li>
+            <li>Simplify collision meshes early—complex geometry rarely survives an SDF version bump</li>
+            <li>Keep your branch history tidy: small, focused commits make rollbacks painless</li>
+            <li>Incremental testing prevents cascading failures in complex scenarios</li>
           </ul>
 
-          <p>I’m looking forward to wrapping up the auto-parking migration next week and turning our attention to comprehensive testing and performance tuning!</p>
+          <p>Looking ahead to Week 5, I'm excited to complete the auto-parking migration and begin comprehensive performance analysis. The foundation we've built over the past four weeks positions us well for delivering robust, production-ready migration solutions that the robotics community can rely on.</p>
+
+          <p>I'm looking forward to wrapping up the auto-parking migration next week and turning our attention to comprehensive testing and performance tuning!</p>
+        </div>>
+
+          <p>Looking ahead to Week 4, I'm excited to tackle the remaining auto-parking challenges and establish our migration work as a comprehensive solution for the robotics community. The foundation built over the first three weeks positions us well for accelerated progress and expanding impact.</p>
+
+          <p>The journey from basic model migration to optimized world scenarios showcases the potential of systematic, well-tested migration approaches. I look forward to continuing this momentum and delivering robust, high-quality migration solutions!</p>
         </div>
       </article>
 
@@ -491,9 +328,7 @@
 
     </div>
 
-  </div>
-
-  <!-- Footer -->
+  </div>  <!-- Footer -->
   <footer class="fixed-bottom">
     <div class="container mt-0">
       © Copyright 2025 JdeRobot x Google Summer of Code 2025. Powered by <a href="https://jekyllrb.com/" target="_blank"
