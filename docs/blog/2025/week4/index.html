@@ -190,6 +190,16 @@
             <li>Harmonized lighting and ground-plane material settings</li>
             <li>Verified obstacle positions still line up with our path tests</li>
           </ul>
+          <div class="image-container">
+              <div class="placeholder-image">
+                <img src="/gsoc2025-Nikhil_Gupta/docs/assets/img/image.png" width="800">
+                Obstacle Avoidance World - Refined Version
+                <br><small>Screenshot showing corrected collision tags and harmonized lighting</small>
+              </div>
+              <div class="image-caption">
+                Obstacle avoidance world running smoothly in Gazebo Harmonic with refined collision detection and improved lighting
+              </div>
+          </div>
 
           <h3 id="followline-fixes">FollowLine Exercise Fixes</h3>
           <p>The FollowLine exercise required several updates to maintain compatibility with our latest migration patterns and ensure smooth operation in both Classic and Harmonic environments.</p>
@@ -244,12 +254,12 @@
             <li>Gazebo Harmonic rejects several parked-car collision meshes with messages about "unsupported geometry type"</li>
           </ul>
 
-          <p><strong>Solution Strategy:</strong></p>
+          <!-- <p><strong>Solution Strategy:</strong></p>
           <ul>
             <li>Converted those meshes to simple convex hulls (via Blender export)</li>
             <li>Updated &lt;collision&gt;&lt;mesh&gt; blocks</li>
             <li>Re-scaled appropriately for proper physics simulation</li>
-          </ul>
+          </ul> -->
 
           <h2 id="technical-insights">Technical Insights and Learnings</h2>
 
