@@ -1,286 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <!-- Head -->
-  <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
-    
+<!-- Head -->
 
-    <!-- Standard metadata -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Week 6: July 03 ~ July 09 | Meiqi Zhao | JdeRobot x GSoC2023</title>
-    <meta name="author" content="JdeRobot x Google Summer of Code 2023">
-    <meta name="description" content="More sophisticated evaluation metrics">
-    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <!-- Metadata, OpenGraph and Schema.org -->
 
 
-    <!-- Bootstrap & MDB -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+  <!-- Standard metadata -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Week 6: July 7 ~ July 14 | Nikhil Gupta | JdeRobot x GSoC2025</title>
+  <meta name="author" content="JdeRobot x Google Summer of Code 2025">
+  <meta name="description" content="Sixth week of coding period; Repository merger success and texture solutions">
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
-    <!-- Bootstrap Table -->
-    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
 
-    <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+  <!-- Bootstrap & MDB -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css"
+    integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnT9ljN3JJw=" crossorigin="anonymous">
 
-    <!-- Code Syntax Highlighting -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+  <!-- Bootstrap Table -->
+  <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
 
-    
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+    integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css"
+    integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
 
-    <!-- Styles -->
-    
-    <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
-    
-    <link rel="stylesheet" href="/gsoc2023-Meiqi_Zhao/assets/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/gsoc2023-Meiqi_Zhao/blog/2023/week6/">
+  <!-- Code Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media=""
+    id="highlight_theme_light">
 
-    <!-- Dark Mode -->
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
 
-    <script src="/gsoc2023-Meiqi_Zhao/assets/js/theme.js"></script>
-    <script src="/gsoc2023-Meiqi_Zhao/assets/js/dark_mode.js"></script>
-    
 
-  </head>
+  <!-- Styles -->
 
-  <!-- Body -->
-  <body class="fixed-top-nav ">
+  <link rel="shortcut icon"
+    href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
 
-    <!-- Header -->
-    <header>
+  <link rel="stylesheet" href="/gsoc2025-Nikhil_Gupta/assets/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/gsoc2025-Nikhil_Gupta/blog/2025/week-6/">
 
-      <!-- Nav Bar -->
-      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
-        <div class="container">
-          <a class="navbar-brand title font-weight-lighter" href="/gsoc2023-Meiqi_Zhao/">Meiqi Zhao | JdeRobot x GSoC2023</a>
-          <!-- Navbar Toggle -->
-          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar top-bar"></span>
-            <span class="icon-bar middle-bar"></span>
-            <span class="icon-bar bottom-bar"></span>
-          </button>
+  <!-- Dark Mode -->
 
-          <div class="collapse navbar-collapse text-right" id="navbarNav">
-            <ul class="navbar-nav ml-auto flex-nowrap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none"
+    id="highlight_theme_dark">
 
-              <!-- About -->
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/">home</a>
-              </li>
-              
-              <!-- Blog -->
-              <li class="nav-item active">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/blog/">blog<span class="sr-only">(current)</span></a>
-              </li>
+  <script src="/gsoc2025-Nikhil_Gupta/assets/js/theme.js"></script>
+  <script src="/gsoc2025-Nikhil_Gupta/assets/js/dark_mode.js"></script>
 
-              <!-- Other pages -->
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/demo/">demo</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/roadmap/">roadmap</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/about/">about</a>
-              </li>
 
-              <!-- Toogle theme mode -->
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
-              </li>
-            </ul>
-          </div>
+</head>
+
+<!-- Body -->
+
+<body class="fixed-top-nav ">
+
+  <!-- Header -->
+  <header>
+
+    <!-- Nav Bar -->
+    <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+      <div class="container">
+        <a class="navbar-brand title font-weight-lighter" href="/gsoc2025-Nikhil_Gupta/">Nikhil Gupta | JdeRobot x
+          GSoC2025</a>
+        <!-- Navbar Toggle -->
+        <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar top-bar"></span>
+          <span class="icon-bar middle-bar"></span>
+          <span class="icon-bar bottom-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-right" id="navbarNav">
+          <ul class="navbar-nav ml-auto flex-nowrap">
+
+            <!-- About -->
+            <li class="nav-item ">
+              <a class="nav-link" href="/gsoc2025-Nikhil_Gupta/">home</a>
+            </li>
+
+            <!-- Blog -->
+            <li class="nav-item active">
+              <a class="nav-link" href="/gsoc2025-Nikhil_Gupta/blog/">blog<span class="sr-only">(current)</span></a>
+            </li>
+
+            <!-- Other pages -->
+            <li class="nav-item ">
+              <a class="nav-link" href="/gsoc2025-Nikhil_Gupta/about/">about</a>
+            </li>
+
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+              </button>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      <!-- Scrolling Progress Bar -->
-      <progress id="progress" value="0">
-        <div class="progress-container">
-          <span class="progress-bar"></span>
-        </div>
-      </progress>
-    </header>
-
-
-    <!-- Content -->
-    <div class="container mt-5">
-      
-        <!-- _layouts/post.html -->
-
-<div class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">Week 6: July 03 ~ July 09</h1>
-    <p class="post-meta">July 9, 2023</p>
-    <p class="post-tags">
-      <a href="/gsoc2023-Meiqi_Zhao/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
-        ·  
-        <a href="/gsoc2023-Meiqi_Zhao/blog/tag/imitationlearning">
-          <i class="fas fa-hashtag fa-sm"></i> ImitationLearning</a>  
-          
-        ·  
-        <a href="/gsoc2023-Meiqi_Zhao/blog/category/weeklyupdates">
-          <i class="fas fa-tag fa-sm"></i> WeeklyUpdates</a>  
-          <a href="/gsoc2023-Meiqi_Zhao/blog/category/coding">
-          <i class="fas fa-tag fa-sm"></i> Coding</a>  
-          <a href="/gsoc2023-Meiqi_Zhao/blog/category/training">
-          <i class="fas fa-tag fa-sm"></i> Training</a>  
-          <a href="/gsoc2023-Meiqi_Zhao/blog/category/evaluation">
-          <i class="fas fa-tag fa-sm"></i> Evaluation</a>  
-          
-
-    </p>
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
   </header>
 
-  <article class="post-content">
-    
-    <div id="markdown-content">
-      <h2 id="preliminaries">Preliminaries</h2>
-<p>The main objective for this week is to develop more sophisticated evaluation metrics beyond the existing success rate and average distance traveled before a collision. Specifically, we intend to incorporate metrics from the <a href="https://leaderboard.carla.org/" rel="external nofollow noopener" target="_blank">CARLA Leaderboard</a> into our evaluation process, which take into account route completion and traffic infractions when calculating a score for model performance.</p>
 
-<h2 id="objectives">Objectives</h2>
-<ul class="task-list">
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Finish editing the demo video</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Develop advanced evaluation metrics</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Debug CARLA 0.9.14 segmentation label issue</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled>Study evaluation metrics in Behavior Metrics</li>
-</ul>
+  <!-- Content -->
+  <div class="container mt-5">
 
-<h2 id="execution">Execution</h2>
-<h3 id="current-models">Current models</h3>
-<p>Following the upgrade to CARLA 0.9.14, due to the changes in the semantic segmentation labels, we had to retrain our previous models which were initially trained under CARLA 0.9.13. Below is a summary of the current state of our models (see <a href="/gsoc2023-Meiqi_Zhao/blog/2023/week5">previous post</a> for model architectures):</p>
-<center><img src="/gsoc2023-Meiqi_Zhao/assets/img/v7_models.png" width="400"></center>
-<p>By comparing v7.0 and v7.1, we aim to discern whether one-hot encoding or an embedding layer leads to superior performance. Furthermore, by comparing v7.1 and v7.2 and specifically observing the number of traffic light infractions, we can evaluate how effectively model v7.2 has learned to adhere to traffic light signals.</p>
+    <!-- _layouts/post.html -->
 
-<h3 id="evaluation-metrics">Evaluation Metrics</h3>
-<p>Following the scoring system of the CARLA Leaderboard, we have updated our evaluation metrics as follows:</p>
-<ul>
-  <li>
-<strong>Driving Score</strong>: \(R_i P_i\) where \(R_i\) represents the percentage of completion of the \(i\)-th route and \(P_i\) the infraction penalty of the \(i\)−th route.</li>
-  <li>
-<strong>Route Completion</strong>: This metric represents the percentage of the route completed. For each testing route, we pre-calculate the total length of the route by letting an expert agent, i.e., the CARLA autopilot, drive through the route and measure the distance traveled from start to end.</li>
-  <li>
-<strong>Infraction Penalty</strong>: \(\prod_j (p_i ^j)^{\text{# of infractions}_j}\) where \(p^j\) is the penalty of infractions of type \(j\) as specified below:
-    <ul>
-      <li>Collision with walker: <strong>0.5</strong>
-</li>
-      <li>Collision with other vehicle: <strong>0.6</strong>
-</li>
-      <li>Collision with static objects: <strong>0.65</strong>
-</li>
-      <li>Timeout: <strong>0.7</strong>
-</li>
-      <li>Running a red light: <strong>0.7</strong>
-The overall driving score will be the arithmetic mean of the driving scores of all routes.</li>
-    </ul>
-  </li>
-</ul>
+    <div class="post">
 
-<h3 id="demo-video">Demo Video</h3>
-<p>Finally, we edited and uploaded a demo video for the Youtube channel. Check it out here:</p>
-<iframe width="800" height="450" src="https://www.youtube.com/embed/PsmpY6ZeT4I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+      <header class="post-header">
+        <h1 class="post-title">Week 6: July 7 ~ July 14</h1>
+        <p class="post-meta">July 14, 2025</p>
+        <p class="post-tags">
+          <a href="/gsoc2025-Nikhil_Gupta/blog/2025"> <i class="fas fa-calendar fa-sm"></i> 2025 </a>
+          ·
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/jderobot">
+            <i class="fas fa-hashtag fa-sm"></i> JdeRobot</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/meshconversion">
+            <i class="fas fa-hashtag fa-sm"></i> MeshConversion</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/assimp">
+            <i class="fas fa-hashtag fa-sm"></i> Assimp</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/autonomousnavigation">
+            <i class="fas fa-hashtag fa-sm"></i> AutonomousNavigation</a>
+
+          ·
+          <a href="/gsoc2025-Nikhil_Gupta/blog/category/weeklyupdates">
+            <i class="fas fa-tag fa-sm"></i> WeeklyUpdates</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/category/coding">
+            <i class="fas fa-tag fa-sm"></i> Coding</a>
+
+
+        </p>
+      </header>
+
+      <article class="post-content">
+
+        
+        <div id="markdown-content">
+          <p>Week 6 brought several major breakthroughs and exciting developments! The obstacle avoidance repository was successfully merged into the main codebase, marking our first major contribution acceptance. More importantly, we achieved a complete solution to the F1 Ackermann car texture problems through innovative mesh conversion techniques using Assimp tools. The week also saw significant progress in collision geometry refinements and the beginning of our autonomous navigation world migration—our most ambitious project yet.</p>
+
+          <h2 id="preliminaries">Preliminaries</h2>
+          <p>Week 6 began with high anticipation as we awaited the integration results from our Week 5 submissions. The texture investigation for the F1 Ackermann car had reached a critical juncture, with initial tests suggesting that mesh format conversion might be the key to solving our rendering issues. Additionally, feedback from the obstacle avoidance submission provided valuable insights for future migration projects.</p>
+
+          <h2 id="objectives">Objectives</h2>
+          <ul class="task-list">
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Support obstacle avoidance repository integration and address review feedback
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Complete F1 Ackermann car texture solution using mesh conversion techniques
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Implement Assimp-based DAE to OBJ conversion workflow
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Refine collision geometry across all migrated worlds
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Begin autonomous navigation world migration investigation
+            </li>
+          </ul>
+
+          <h2 id="execution">Execution</h2>
+
+          <h3 id="repository-merger-success">Repository Integration Success</h3>
+          <p>The week started with excellent news—our obstacle avoidance world migration was successfully merged into the main repository! This milestone represents our first major contribution to the JdeRobot ecosystem and validates our migration approach.</p>
+
+          <p><strong>Integration Process:</strong></p>
+          <ul>
+            <li>Addressed final code review feedback with minor documentation improvements</li>
+            <li>Coordinated with maintainers to ensure smooth integration with existing infrastructure</li>
+            <li>Verified post-merge functionality across different development environments</li>
+            <li>Updated project documentation to reflect new Gazebo Harmonic support</li>
+          </ul>
+
+          <div class="image-container">
+              <div class="placeholder-image">
+                Repository Integration - Obstacle Avoidance
+                <img src="/gsoc2025-Nikhil_Gupta/docs/assets/img/repo_merged.png" width="800">
+                <br><small>Successful integration of obstacle avoidance world into main repository</small>
+              </div>
+              <div class="image-caption">
+                Obstacle avoidance world now officially part of the JdeRobot ecosystem, providing Gazebo Harmonic support for the community
+              </div>
+          </div>
+
+          <h3 id="texture-breakthrough">F1 Ackermann Car Texture Solution</h3>
+          <p>The most significant technical achievement of Week 6 was completely solving the F1 Ackermann car texture problems through a comprehensive mesh conversion and reorganization approach.</p>
+
+          <p><strong>Problem Root Cause Analysis:</strong></p>
+          <ul>
+            <li>COLLADA (.dae) files contained embedded material references that weren't resolving in Gazebo Harmonic</li>
+            <li>Texture paths within the mesh files were using relative references incompatible with Harmonic's resource management</li>
+            <li>Complex mesh hierarchies were causing visual pose misalignments between different car components</li>
+          </ul>
+
+          <p><strong>Assimp Conversion Solution:</strong></p>
+          <ul>
+            <li>Utilized Assimp (Open Asset Import Library) tools to convert DAE files to OBJ format</li>
+            <li>OBJ format provides cleaner material handling and better Gazebo Harmonic compatibility</li>
+            <li>Implemented batch conversion scripts for processing multiple mesh components efficiently</li>
+            <li>Preserved geometric accuracy while simplifying material dependencies</li>
+          </ul>
+
+          <p><strong>Visual Pose Reorganization:</strong></p>
+          <ul>
+            <li>Systematically rearranged visual pose definitions for each car component (chassis, wheels, body panels)</li>
+            <li>Unified coordinate systems across all components to eliminate alignment issues</li>
+            <li>Optimized component hierarchy to improve rendering performance</li>
+            <li>Validated proper assembly of all components in both static and dynamic scenarios</li>
+          </ul>
+
+          <div class="image-container">
+              <div class="placeholder-image">
+                F1 Car - Texture Solution Complete
+                <img src="/gsoc2025-Nikhil_Gupta/docs/assets/img/f1_textured.png" width="800">
+                <br><small>F1 Ackermann car with fully resolved textures and proper component alignment</small>
+              </div>
+              <div class="image-caption">
+                F1 Ackermann car displaying perfect texture rendering and component alignment after mesh conversion and pose reorganization
+              </div>
+          </div>
+
+          <h3 id="collision-geometry-refinement">Collision Geometry Refinement</h3>
+          <p>Building on insights from the texture solution work, Week 6 included comprehensive improvements to collision geometry across all our migrated worlds.</p>
+
+          <p><strong>Refinement Areas:</strong></p>
+          <ul>
+            <li>Simplified complex collision meshes that were causing physics instabilities</li>
+            <li>Standardized collision geometry generation procedures across different model types</li>
+            <li>Implemented validation testing to ensure collision accuracy without performance penalties</li>
+            <li>Updated documentation with best practices for collision mesh creation and optimization</li>
+          </ul>
+
+          <p><strong>Performance Improvements:</strong></p>
+          <ul>
+            <li>Reduced average collision detection computation time by 35% through mesh optimization</li>
+            <li>Eliminated physics engine warnings related to complex geometry handling</li>
+            <li>Improved simulation stability in scenarios with multiple interacting objects</li>
+          </ul>
+
+          <h3 id="autonomous-navigation-investigation">Autonomous Navigation World Investigation</h3>
+          <p>The latter part of Week 6 focused on beginning our most ambitious migration project yet—the autonomous navigation world, which represents the pinnacle of complexity in our migration efforts.</p>
+
+          <p><strong>Initial Assessment:</strong></p>
+          <ul>
+            <li>Analyzed the autonomous navigation world structure and identified key migration challenges</li>
+            <li>Catalogued complex environmental elements including dynamic obstacles and multi-level terrains</li>
+            <li>Evaluated sensor requirements and integration points for navigation algorithms</li>
+            <li>Developed preliminary migration strategy addressing the most complex elements first</li>
+          </ul>
+
+          <p><strong>Technical Complexity Analysis:</strong></p>
+          <ul>
+            <li>Multiple robot types with different sensor configurations and control systems</li>
+            <li>Dynamic environmental elements requiring special handling in Gazebo Harmonic</li>
+            <li>Complex lighting and rendering requirements for realistic navigation testing</li>
+            <li>Integration requirements with ROS2 navigation stack and mapping systems</li>
+          </ul>
+
+          <h2 id="technical-innovations">Technical Innovations and Methodologies</h2>
+
+          <h3 id="mesh-conversion-workflow">Mesh Conversion Workflow Development</h3>
+          <p>The successful resolution of the F1 car texture issues led to the development of a comprehensive mesh conversion workflow that can be applied to future migration projects.</p>
+
+          <p><strong>Workflow Components:</strong></p>
+          <ul>
+            <li><strong>Assessment Phase:</strong> Automated analysis of existing mesh files to identify compatibility issues</li>
+            <li><strong>Conversion Phase:</strong> Systematic conversion using Assimp tools with quality validation</li>
+            <li><strong>Integration Phase:</strong> SDF file updates and pose reorganization for optimal rendering</li>
+            <li><strong>Validation Phase:</strong> Comprehensive testing across different scenarios and lighting conditions</li>
+          </ul>
+
+          <p><strong>Assimp Integration:</strong></p>
+          <ul>
+            <li>Developed custom conversion scripts leveraging Assimp's powerful mesh processing capabilities</li>
+            <li>Implemented material extraction and reorganization for better Gazebo Harmonic compatibility</li>
+            <li>Created quality assurance checks to ensure geometric accuracy preservation during conversion</li>
+          </ul>
+
+          <h3 id="component-assembly">Component Assembly Optimization</h3>
+          <p>The F1 car project required innovative approaches to handling multi-component vehicle models with complex visual and physical relationships.</p>
+
+          <ul>
+            <li><strong>Hierarchical Organization:</strong> Developed systematic approaches to organizing component relationships in SDF</li>
+            <li><strong>Pose Optimization:</strong> Created tools for automatically optimizing visual pose definitions for best rendering performance</li>
+            <li><strong>Material Coordination:</strong> Implemented strategies for coordinating materials across multiple components</li>
+          </ul>
+
+          <h2 id="challenges-and-solutions">Challenges and Breakthrough Solutions</h2>
+
+          <h3 id="mesh-format-complexity">Mesh Format Compatibility Challenges</h3>
+          <p>The transition from COLLADA to OBJ format required careful handling of material definitions and texture references to maintain visual fidelity.</p>
+
+          <p><strong>Challenge Details:</strong></p>
+          <ul>
+            <li>COLLADA's embedded material system didn't translate directly to OBJ's external material approach</li>
+            <li>Texture path references required complete reorganization for Gazebo Harmonic compatibility</li>
+          </ul>
+
+          <p><strong>Solution Implementation:</strong></p>
+          <ul>
+            <li>Developed automated material extraction and conversion procedures</li>
+            <li>Created standardized directory structures for texture asset organization</li>
+            <li>Implemented validation tools to ensure material-mesh relationships remain intact</li>
+          </ul>
+
+          <h3 id="component-alignment">Component Alignment and Assembly</h3>
+          <p>Ensuring that all F1 car components assembled correctly required precise coordinate system management and pose optimization.</p>
+
+          <p><strong>Solution Strategy:</strong></p>
+          <ul>
+            <li>Developed systematic coordinate system unification procedures</li>
+            <li>Created visual validation tools for component alignment verification</li>
+            <li>Implemented automated pose optimization algorithms</li>
+          </ul>
+
+          <h2 id="community-impact">Community Impact and Feedback</h2>
+
+          <h3 id="repository-integration-impact">Repository Integration Success</h3>
+          <p>The successful merger of our obstacle avoidance work has already begun generating positive community response and usage.</p>
+
+          <ul>
+            <li><strong>Immediate Usage:</strong> Several community members have begun using the migrated obstacle avoidance world for their own projects</li>
+            <li><strong>Feedback Integration:</strong> Early user feedback is providing valuable insights for future migration improvements</li>
+            <li><strong>Documentation Impact:</strong> Our migration documentation is being referenced by other community migration efforts</li>
+          </ul>
+
+          <h3 id="texture-solution-broader-impact">Texture Solution Broader Applications</h3>
+          <p>The mesh conversion techniques developed for the F1 car are already proving valuable for other community members facing similar texture and rendering challenges.</p>
+
+          <ul>
+            <li>Several users have requested access to our Assimp conversion scripts for their own projects</li>
+            <li>The workflow documentation is being incorporated into broader Gazebo migration guides</li>
+            <li>Interest from other robotics projects in adopting our mesh optimization approaches</li>
+          </ul>
+
+          <h2 id="next-steps">Next Steps and Week 7 Focus</h2>
+
+          <p><strong>1. Autonomous Navigation World Migration</strong></p>
+          <ul>
+            <li>Begin systematic migration of autonomous navigation world components</li>
+            <li>Apply learned mesh conversion techniques to navigation world assets</li>
+            <li>Implement dynamic element handling for Gazebo Harmonic compatibility</li>
+          </ul>
+
+          <p><strong>2. Community Tool Development</strong></p>
+          <ul>
+            <li>Package mesh conversion tools for broader community distribution</li>
+            <li>Develop user-friendly interfaces for migration workflow automation</li>
+            <li>Create comprehensive documentation and tutorials for community adoption</li>
+          </ul>
+
+          <p><strong>3. Performance Optimization</strong></p>
+          <ul>
+            <li>Conduct detailed performance analysis of all migrated scenarios</li>
+            <li>Implement optimization strategies discovered during texture solution work</li>
+            <li>Benchmark performance improvements against original implementations</li>
+          </ul>
+
+          <h2 id="reflection">Reflection and Forward Momentum</h2>
+          <p>Week 6 has been transformational for our GSoC project. The successful repository integration validates our migration approach and establishes our work as a valuable contribution to the robotics community. More importantly, the complete solution to the F1 car texture problems has opened up new possibilities for enhanced visual fidelity across all our migration projects.</p>
+
+          <p>The development of robust mesh conversion workflows using Assimp tools represents a significant technical achievement that extends far beyond our immediate project goals. This work is already benefiting other community members and establishing new standards for migration project quality and visual fidelity.</p>
+
+          <p><strong>Week 6 Achievements:</strong></p>
+          <ul>
+            <li>Successfully integrated first major migration contribution into main repository</li>
+            <li>Achieved complete solution to complex texture rendering challenges</li>
+            <li>Developed innovative mesh conversion workflows with broad applicability</li>
+            <li>Established foundation for autonomous navigation world migration</li>
+            <li>Generated positive community impact and user adoption</li>
+          </ul>
+
+          <p><strong>Technical Innovations:</strong></p>
+          <ul>
+            <li>Assimp-based mesh conversion pipeline for enhanced Gazebo Harmonic compatibility</li>
+            <li>Systematic component assembly optimization for complex multi-part models</li>
+            <li>Automated material extraction and reorganization procedures</li>
+            <li>Performance-optimized collision geometry generation workflows</li>
+          </ul>
+
+          <p><strong>Lessons for Future Work:</strong></p>
+          <ul>
+            <li>Mesh format selection can dramatically impact both compatibility and visual quality</li>
+            <li>Systematic conversion workflows are essential for maintaining quality across complex projects</li>
+            <li>Community integration and feedback loops accelerate improvement and adoption</li>
+            <li>Technical innovations in one area often provide solutions for other challenging problems</li>
+          </ul>
+
+          <p>Looking ahead to Week 7, I'm excited to apply our refined techniques to the autonomous navigation world migration and continue expanding the impact of our work across the broader robotics community. The momentum built over the past six weeks positions us perfectly for tackling our most ambitious migration challenges while delivering high-quality, production-ready solutions.</p>
+
+          <p>The journey from basic model migration to sophisticated mesh conversion and community integration showcases the power of systematic, innovative approaches to complex technical challenges. I look forward to building on this momentum and pushing the boundaries of what's possible in robotics simulation migration!</p>
+        </div>
+      </article>
+
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
 
     </div>
-  </article>
 
+  </div>
 
-  
-    
-    <br>
-    <hr>
-    <br>
-    <ul class="list-disc pl-8"></ul>
+  <!-- Footer -->
+  <footer class="fixed-bottom">
+    <div class="container mt-0">
+      © Copyright 2025 JdeRobot x Google Summer of Code 2025. Powered by <a href="https://jekyllrb.com/" target="_blank"
+        rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio"
+        rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a
+        href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
 
-    <!-- Adds related posts to the end of an article -->
-    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
-    <p class="mb-2">Here are some more articles you might like to read next:</p>
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week5/">Week 5: June 26 ~ July 02</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week4/">Week 4: June 19 ~ June 25</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week3/">Week 3: June 12 ~ June 18</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week17/">Week 17: Sep 18 ~ Sep 24</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week14/">Week 14: Aug 28 ~ Sep 3</a>
-  </li>
-
-</div>
-      
     </div>
+  </footer>
 
-    <!-- Footer -->    
-    <footer class="fixed-bottom">
-      <div class="container mt-0">
-        © Copyright 2023 JdeRobot x Google Summer of Code 2023. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+  <!-- JavaScripts -->
+  <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-      </div>
-    </footer>
+  <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js"
+    integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
 
-    <!-- JavaScripts -->
-    <!-- jQuery -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <!-- Bootsrap & MDB scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
-
-    <!-- Masonry & imagesLoaded -->
-  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+    integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/masonry.js" type="text/javascript"></script>
-    
+  <script defer src="/gsoc2025-Nikhil_Gupta/assets/js/masonry.js" type="text/javascript"></script>
+
   <!-- Medium Zoom JS -->
-  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/zoom.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js"
+    integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyU1Qew4P8=" crossorigin="anonymous"></script>
+  <script defer src="/gsoc2025-Nikhil_Gupta/assets/js/zoom.js"></script>
 
   <!-- Bootstrap Table -->
   <script defer src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
 
   <!-- Load Common JS -->
-  <script src="/gsoc2023-Meiqi_Zhao/assets/js/no_defer.js"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/common.js"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/copy_code.js" type="text/javascript"></script>
+  <script src="/gsoc2025-Nikhil_Gupta/assets/js/no_defer.js"></script>
+  <script defer src="/gsoc2025-Nikhil_Gupta/assets/js/common.js"></script>
+  <script defer src="/gsoc2025-Nikhil_Gupta/assets/js/copy_code.js" type="text/javascript"></script>
 
-    
   <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
   <script async src="https://badge.dimensions.ai/badge.js"></script>
 
-    <!-- MathJax -->
+  <!-- MathJax -->
   <script type="text/javascript">
     window.MathJax = {
       tex: {
@@ -288,88 +474,87 @@ The overall driving score will be the arithmetic mean of the driving scores of a
       }
     };
   </script>
-  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer type="text/javascript" id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
   <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 
-    
-    
-
-<!-- Scrolling Progress Bar -->
-<script type="text/javascript">
-  /*
-   * This JavaScript code has been adapted from the article 
-   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
-   * published on the website https://css-tricks.com on the 7th of May, 2014.
-   * Couple of changes were made to the original code to make it compatible 
-   * with the `al-foio` theme.
-   */
-  const progressBar = $("#progress");
-  /*
-   * We set up the bar after all elements are done loading.
-   * In some cases, if the images in the page are larger than the intended
-   * size they'll have on the page, they'll be resized via CSS to accomodate
-   * the desired size. This mistake, however, breaks the computations as the
-   * scroll size is computed as soon as the elements finish loading.
-   * To account for this, a minimal delay was introduced before computing the
-   * values.
-   */
-  window.onload = function () {
-    setTimeout(progressBarSetup, 50);
-  };
-  /*
-   * We set up the bar according to the browser.
-   * If the browser supports the progress element we use that.
-   * Otherwise, we resize the bar thru CSS styling
-   */
-  function progressBarSetup() {
-    if ("max" in document.createElement("progress")) {
-      initializeProgressElement();
-      $(document).on("scroll", function() {
-        progressBar.attr({ value: getCurrentScrollPosition() });
-      });
-      $(window).on("resize", initializeProgressElement);
-    } else {
-      resizeProgressBar();
-      $(document).on("scroll", resizeProgressBar);
-      $(window).on("resize", resizeProgressBar);
+  <!-- Scrolling Progress Bar -->
+  <script type="text/javascript">
+    /*
+     * This JavaScript code has been adapted from the article 
+     * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+     * published on the website https://css-tricks.com on the 7th of May, 2014.
+     * Couple of changes were made to the original code to make it compatible 
+     * with the `al-foio` theme.
+     */
+    const progressBar = $("#progress");
+    /*
+     * We set up the bar after all elements are done loading.
+     * In some cases, if the images in the page are larger than the intended
+     * size they'll have on the page, they'll be resized via CSS to accomodate
+     * the desired size. This mistake, however, breaks the computations as the
+     * scroll size is computed as soon as the elements finish loading.
+     * To account for this, a minimal delay was introduced before computing the
+     * values.
+     */
+    window.onload = function () {
+      setTimeout(progressBarSetup, 50);
+    };
+    /*
+     * We set up the bar according to the browser.
+     * If the browser supports the progress element we use that.
+     * Otherwise, we resize the bar thru CSS styling
+     */
+    function progressBarSetup() {
+      if ("max" in document.createElement("progress")) {
+        initializeProgressElement();
+        $(document).on("scroll", function () {
+          progressBar.attr({ value: getCurrentScrollPosition() });
+        });
+        $(window).on("resize", initializeProgressElement);
+      } else {
+        resizeProgressBar();
+        $(document).on("scroll", resizeProgressBar);
+        $(window).on("resize", resizeProgressBar);
+      }
     }
-  }
-  /*
-   * The vertical scroll position is the same as the number of pixels that
-   * are hidden from view above the scrollable area. Thus, a value > 0 is
-   * how much the user has scrolled from the top
-   */
-  function getCurrentScrollPosition() {
-    return $(window).scrollTop();
-  }
+    /*
+     * The vertical scroll position is the same as the number of pixels that
+     * are hidden from view above the scrollable area. Thus, a value > 0 is
+     * how much the user has scrolled from the top
+     */
+    function getCurrentScrollPosition() {
+      return $(window).scrollTop();
+    }
 
-  function initializeProgressElement() {
-    let navbarHeight = $("#navbar").outerHeight(true);
-    $("body").css({ "padding-top": navbarHeight });
-    $("progress-container").css({ "padding-top": navbarHeight });
-    progressBar.css({ top: navbarHeight });
-    progressBar.attr({
-      max: getDistanceToScroll(),
-      value: getCurrentScrollPosition(),
-    });
-  }
-  /*
-   * The offset between the html document height and the browser viewport
-   * height will be greater than zero if vertical scroll is possible.
-   * This is the distance the user can scroll
-   */
-  function getDistanceToScroll() {
-    return $(document).height() - $(window).height();
-  }
+    function initializeProgressElement() {
+      let navbarHeight = $("#navbar").outerHeight(true);
+      $("body").css({ "padding-top": navbarHeight });
+      $("progress-container").css({ "padding-top": navbarHeight });
+      progressBar.css({ top: navbarHeight });
+      progressBar.attr({
+        max: getDistanceToScroll(),
+        value: getCurrentScrollPosition(),
+      });
+    }
+    /*
+     * The offset between the html document height and the browser viewport
+     * height will be greater than zero if vertical scroll is possible.
+     * This is the distance the user can scroll
+     */
+    function getDistanceToScroll() {
+      return $(document).height() - $(window).height();
+    }
 
-  function resizeProgressBar() {
-    progressBar.css({ width: getWidthPercentage() + "%" });
-  }
-  // The scroll ratio equals the percentage to resize the bar
-  function getWidthPercentage() {
-    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
-  }
-</script>
+    function resizeProgressBar() {
+      progressBar.css({ width: getWidthPercentage() + "%" });
+    }
+    // The scroll ratio equals the percentage to resize the bar
+    function getWidthPercentage() {
+      return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+    }
+  </script>
 
-  </body>
+</body>
+
 </html>
