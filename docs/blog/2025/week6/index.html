@@ -172,6 +172,9 @@
               <input type="checkbox" class="task-list-item-checkbox" disabled checked> Implement Assimp-based DAE to OBJ conversion workflow
             </li>
             <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Complete migration of ackermann_autoparking_Car with 3-laser sensor array
+            </li>
+            <li class="task-list-item">
               <input type="checkbox" class="task-list-item-checkbox" disabled checked> Refine collision geometry across all migrated worlds
             </li>
             <li class="task-list-item">
@@ -192,16 +195,16 @@
             <li>Updated project documentation to reflect new Gazebo Harmonic support</li>
           </ul>
 
-          <!-- <div class="image-container">
+          <div class="image-container">
               <div class="placeholder-image">
-                Repository Integration - Obstacle Avoidance
-                <img src="/gsoc2025-Nikhil_Gupta/docs/assets/img/repo_merged.png" width="800">
-                <br><small>Successful integration of obstacle avoidance world into main repository</small>
+                Repository Integration - Autoparking
+                <img src="/gsoc2025-Nikhil_Gupta/docs/assets/img/Autoparking_complete.png" width="800">
+                <br><small>Successful integration of Autoparking world into main repository</small>
               </div>
               <div class="image-caption">
-                Obstacle avoidance world now officially part of the JdeRobot ecosystem, providing Gazebo Harmonic support for the community
+                Autoparking world now officially part of the JdeRobot ecosystem, providing Gazebo Harmonic support for the community
               </div>
-          </div> -->
+          </div>
 
           <h3 id="texture-breakthrough">F1 Ackermann Car Texture Solution</h3>
           <p>The most significant technical achievement of Week 6 was completely solving the F1 Ackermann car texture problems through a comprehensive mesh conversion and reorganization approach.</p>
@@ -232,7 +235,7 @@
           <div class="image-container">
               <div class="placeholder-image">
                 F1 Car - Texture Solution Complete
-                <img src="https://theroboticsclub.github.io/gsoc2025-Nikhil_Gupta/assets/img/obstacles.png" width="800">
+                <img src="/gsoc2025-Nikhil_Gupta/docs/assets/img/f1_textured.png" width="800">
                 <br><small>F1 Ackermann car with fully resolved textures and proper component alignment</small>
               </div>
               <div class="image-caption">
@@ -258,8 +261,53 @@
             <li>Improved simulation stability in scenarios with multiple interacting objects</li>
           </ul>
 
-          <h3 id="autonomous-navigation-investigation">Autonomous Navigation World Investigation</h3>
-          <p>The latter part of Week 6 focused on beginning our most ambitious migration project yet—the autonomous navigation world, which represents the pinnacle of complexity in our migration efforts.</p>
+          <h3 id="autonomous-navigation-investigation">Ackermann Autoparking Car Migration and Autonomous Navigation Investigation</h3>
+          <p>Building on the successful F1 car texture solutions, Week 6 also saw the complete migration of the ackermann_autoparking_Car model with its sophisticated 3-laser sensor array—a critical component for advanced parking maneuvers and obstacle detection.</p>
+
+          <p><strong>Ackermann Autoparking Car Completion:</strong></p>
+          <ul>
+            <li>Successfully migrated the complete ackermann_autoparking_Car model from Gazebo Classic to Harmonic</li>
+            <li>Integrated three strategically positioned laser sensors (front, side, and rear) for comprehensive environment scanning</li>
+            <li>Applied mesh conversion techniques learned from F1 car project to ensure optimal visual rendering</li>
+            <li>Validated sensor data integration and proper topic publishing for all three laser arrays</li>
+            <li>Tested complete autoparking functionality including obstacle detection and path planning integration</li>
+          </ul>
+
+          <!-- <div class="image-container">
+              <div class="placeholder-image">
+                Ackermann Autoparking Car - 3 Laser Configuration
+                <img src="{{ '/assets/img/ackermann_3laser_car.png' | relative_url }}" 
+                     width="800" 
+                     alt="Ackermann autoparking car with 3 laser sensors"
+                     style="max-width: 100%; height: auto;">
+                <br><small>Ackermann autoparking car featuring three laser sensors and enhanced visual fidelity</small>
+              </div>
+              <div class="image-caption">
+                Complete ackermann_autoparking_Car migration showing all three laser sensors operational and proper mesh rendering
+              </div>
+          </div> -->
+
+          <p><strong>Demonstration Video:</strong></p>
+          <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px 0;">
+              <video controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                  <source src="https://theroboticsclub.github.io/gsoc2025-Nikhil_Gupta/assets/video/autoparking.mp4" type="video/mp4">
+                  <p>Your browser doesn't support HTML5 video. <a href="{{ '/assets/videos/ackermann_autoparking_demo.mp4' | relative_url }}">Download the video</a> instead.</p>
+              </video>
+          </div>
+          <div class="video-caption">
+              <small>Complete working demonstration of the ackermann_autoparking_Car with 3-laser sensor array performing obstacle detection and navigation in the migrated Gazebo Harmonic environment</small>
+          </div>
+
+          <p><strong>Technical Integration Highlights:</strong></p>
+          <ul>
+            <li>Seamless integration of multi-laser sensor data for 360-degree environmental awareness</li>
+            <li>Optimized sensor positioning for maximum coverage with minimal blind spots</li>
+            <li>Proper coordinate frame relationships ensuring accurate localization and mapping</li>
+            <li>Enhanced collision detection capabilities for safe autonomous parking operations</li>
+          </ul>
+
+          <p><strong>Autonomous Navigation World Investigation:</strong></p>
+          <p>With the ackermann_autoparking_Car successfully migrated, the latter part of Week 6 focused on beginning our most ambitious migration project yet—the autonomous navigation world, which represents the pinnacle of complexity in our migration efforts.</p>
 
           <p><strong>Initial Assessment:</strong></p>
           <ul>
@@ -370,7 +418,7 @@
             <li>Create comprehensive documentation and tutorials for community adoption</li>
           </ul> -->
 
-          <p><strong>. Performance Optimization</strong></p>
+          <p><strong>2. Performance Optimization</strong></p>
           <ul>
             <li>Conduct detailed performance analysis of all migrated scenarios</li>
             <li>Implement optimization strategies discovered during texture solution work</li>
@@ -386,6 +434,7 @@
           <ul>
             <li>Successfully integrated first major migration contribution into main repository</li>
             <li>Achieved complete solution to complex texture rendering challenges</li>
+            <li>Completed full migration of ackermann_autoparking_Car with 3-laser sensor array</li>
             <li>Developed innovative mesh conversion workflows with broad applicability</li>
             <li>Established foundation for autonomous navigation world migration</li>
             <li>Generated positive community impact and user adoption</li>
