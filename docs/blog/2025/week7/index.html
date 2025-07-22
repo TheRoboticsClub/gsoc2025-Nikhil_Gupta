@@ -160,7 +160,7 @@
           <p>Week 7 marked the extended final week of our GSoC journey—a culmination of intensive development efforts and the completion of our most ambitious migration tasks. During this extended week, we successfully completed the migration of both the autonomous navigation world and car to Gazebo Harmonic, representing the pinnacle of complexity in our project. Despite encountering significant challenges with road texture implementation, innovative problem-solving approaches led to effective solutions that maintained the visual integrity and functionality of these critical simulation environments.</p>
 
           <h2 id="preliminaries">Preliminaries</h2>
-          <p>Week 7 began with high momentum following the successful completion of previous migration milestones. The autonomous navigation world and car represented our final and most complex migration challenges—environments that combine sophisticated sensor arrays, dynamic elements, complex terrains, and intricate visual components. The week's extended timeline provided the necessary buffer to tackle these comprehensive migration tasks with the attention to detail they demanded.</p>
+          <p>Week 7 began with high momentum following the successful completion of previous migration milestones. The autonomous navigation world and car represented our final migration challenges. The week's extended timeline provided the necessary buffer to tackle these comprehensive migration tasks with the attention to detail they demanded.</p>
 
           <h2 id="objectives">Objectives</h2>
           <ul class="task-list">
@@ -168,16 +168,10 @@
               <input type="checkbox" class="task-list-item-checkbox" disabled checked> Complete migration of autonomous navigation world to Gazebo Harmonic
             </li>
             <li class="task-list-item">
-              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Migrate autonomous navigation car with all sensor configurations
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Migrate autonomous navigation car
             </li>
             <li class="task-list-item">
               <input type="checkbox" class="task-list-item-checkbox" disabled checked> Resolve road texture implementation challenges using innovative solutions
-            </li>
-            <li class="task-list-item">
-              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Implement comprehensive testing and validation procedures
-            </li>
-            <li class="task-list-item">
-              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Document complete migration methodologies for community use
             </li>
             <li class="task-list-item">
               <input type="checkbox" class="task-list-item-checkbox" disabled checked> Prepare final deliverables and demonstration materials
@@ -187,9 +181,9 @@
           <h2 id="execution">Execution</h2>
 
           <h3 id="autonomous-world-migration">Autonomous Navigation World Migration</h3>
-          <p>The autonomous navigation world presented our most complex migration challenge, featuring multiple interconnected systems, dynamic elements, and sophisticated environmental modeling that required careful adaptation for Gazebo Harmonic compatibility.</p>
+          <p>The autonomous navigation world migration had a major challenge which was to add road textures to the world. The main task was migrating the world's models, this involved converting all the associated meshes.</p>
 
-          <p><strong>World Structure Analysis and Migration:</strong></p>
+          <!-- <p><strong>World Structure Analysis and Migration:</strong></p>
           <ul>
             <li>Systematically analyzed the complete world structure, identifying over 50 distinct components including buildings, roads, traffic elements, and environmental features</li>
             <li>Applied our refined mesh conversion workflows to ensure optimal rendering performance across all environmental elements</li>
@@ -203,26 +197,25 @@
             <li>Maintained complex intersection layouts and traffic flow patterns essential for autonomous navigation testing</li>
             <li>Implemented proper collision boundaries for all environmental elements while optimizing physics performance</li>
             <li>Ensured compatibility with ROS2 navigation stack integration points</li>
-          </ul>
+          </ul> -->
 
           <div class="image-container">
               <div class="placeholder-image">
                 Autonomous Navigation World - Complete Migration
                 <!-- Placeholder for autonomous navigation world image -->
-                <div style="background-color: #f0f0f0; height: 400px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
-                  [Autonomous Navigation World Screenshot - To be added]
-                </div>
+                <img src="https://theroboticsclub.github.io/gsoc2025-Nikhil_Gupta/assets/img/navigation_world.png" width="800">
+
                 <br><small>Fully migrated autonomous navigation world showing complex urban environment with roads, buildings, and navigation infrastructure</small>
               </div>
               <div class="image-caption">
-                Complete autonomous navigation world migration featuring urban environment, multiple road systems, and integrated navigation infrastructure in Gazebo Harmonic
+                Complete autonomous navigation world migration Gazebo Harmonic
               </div>
           </div>
 
           <h3 id="autonomous-car-migration">Autonomous Navigation Car Migration</h3>
-          <p>The autonomous navigation car represented a sophisticated robotics platform with multiple sensor arrays, advanced control systems, and complex visual components requiring precise migration to maintain functionality and performance.</p>
+          <p>I also migrated the holonomic drive car. The process involved updating its SDF file and ensuring its controller plugins were correctly configured and functional in the new version of Gazebo.</p>
 
-          <p><strong>Advanced Sensor Integration:</strong></p>
+          <!-- <p><strong>Advanced Sensor Integration:</strong></p>
           <ul>
             <li>Successfully migrated comprehensive sensor suite including LIDAR, cameras, IMU, GPS, and ultrasonic sensors</li>
             <li>Maintained proper sensor coordinate frames and topic publishing for seamless ROS2 integration</li>
@@ -236,15 +229,13 @@
             <li>Maintained precise vehicle dynamics modeling for realistic autonomous driving behavior</li>
             <li>Preserved advanced control interfaces compatible with navigation planning algorithms</li>
             <li>Implemented comprehensive testing protocols for vehicle-environment interaction validation</li>
-          </ul>
+          </ul> -->
 
           <div class="image-container">
               <div class="placeholder-image">
-                Autonomous Navigation Car - Sensor Configuration
+                Autonomous Navigation Car
                 <!-- Placeholder for autonomous navigation car image -->
-                <div style="background-color: #f0f0f0; height: 400px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
-                  [Autonomous Navigation Car Screenshot - To be added]
-                </div>
+                <img src="https://theroboticsclub.github.io/gsoc2025-Nikhil_Gupta/assets/img/navigation_car.png" width="800">
                 <br><small>Autonomous navigation car with complete sensor suite and enhanced visual fidelity in Gazebo Harmonic</small>
               </div>
               <div class="image-caption">
@@ -255,14 +246,6 @@
           <h3 id="road-texture-challenges">Road Texture Implementation Challenges and Solutions</h3>
           <p>One of the most significant technical challenges encountered during Week 7 was the implementation of road textures in the autonomous navigation world. Despite extensive efforts using Blender and various texture application techniques, traditional approaches proved insufficient for Gazebo Harmonic's rendering requirements.</p>
 
-          <p><strong>Challenge Analysis:</strong></p>
-          <ul>
-            <li>Road texture files from the original implementation were not compatible with Gazebo Harmonic's updated material system</li>
-            <li>Blender-based texture application attempts resulted in rendering artifacts and performance issues</li>
-            <li>Complex road geometry with multiple intersection points created texture mapping complications</li>
-            <li>UV mapping inconsistencies between different road segments prevented seamless texture application</li>
-          </ul>
-
           <p><strong>Innovative Solution Implementation:</strong></p>
           <p>After extensive testing and experimentation, the most effective solution proved to be the implementation of a black ground plane that provided visual contrast and definition to the road systems while maintaining optimal rendering performance.</p>
 
@@ -272,20 +255,6 @@
             <li><strong>Visual Consistency:</strong> Ensured consistent visual appearance across all road segments and intersection areas</li>
             <li><strong>Navigation Compatibility:</strong> Maintained proper visual landmarks and road boundary definition essential for autonomous navigation algorithms</li>
           </ul>
-
-          <div class="image-container">
-              <div class="placeholder-image">
-                Road System - Ground Plane Solution
-                <!-- Placeholder for road system image -->
-                <div style="background-color: #f0f0f0; height: 400px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
-                  [Road System with Ground Plane Screenshot - To be added]
-                </div>
-                <br><small>Autonomous navigation world road system with black ground plane providing clear visual definition and optimal performance</small>
-              </div>
-              <div class="image-caption">
-                Innovative ground plane solution for road texture challenges, providing clear visual definition while maintaining optimal rendering performance in Gazebo Harmonic
-              </div>
-          </div>
 
           <p><strong>Demonstration Videos:</strong></p>
           <p>The completed migration deliverables include comprehensive demonstration videos showcasing both the autonomous navigation world and car in full operation:</p>
@@ -306,16 +275,13 @@
 
           <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px 0;">
               <!-- Placeholder for autonomous navigation car video -->
-              <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
-                  <div style="text-align: center;">
-                      <h4>[Autonomous Navigation Car Demo Video]</h4>
-                      <p>Complete demonstration of migrated autonomous navigation car<br>
-                      featuring sensor suite operation and navigation capabilities</p>
-                  </div>
-              </div>
+              <video controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                  <source src="https://theroboticsclub.github.io/gsoc2025-Nikhil_Gupta/assets/video/navigation.mp4" type="video/mp4">
+                  <p>Your browser doesn't support HTML5 video. <a href="{{ '/assets/videos/navigation.mp4' | relative_url }}">Download the video</a> instead.</p>
+              </video>
           </div>
           <div class="video-caption">
-              <small>Full operational demonstration of the autonomous navigation car with complete sensor suite, showing navigation capabilities and environmental interaction in the migrated Gazebo Harmonic environment</small>
+              <small>Full operational demonstration of the autonomous navigation car, and environmental interaction in the migrated Gazebo Harmonic environment</small>
           </div>
 
           <h2 id="technical-achievements">Technical Achievements and Methodologies</h2>
@@ -332,14 +298,14 @@
             <li><strong>Validation Testing:</strong> Multi-level testing protocols ensuring functional and performance validation</li>
           </ul>
 
-          <h3 id="problem-solving-innovations">Problem-Solving Innovations</h3>
+          <!-- <h3 id="problem-solving-innovations">Problem-Solving Innovations</h3>
           <p>The road texture challenge resolution exemplifies the innovative problem-solving approaches developed throughout our GSoC journey, demonstrating adaptability and creative thinking when conventional solutions prove inadequate.</p>
 
           <ul>
             <li><strong>Alternative Solution Development:</strong> When traditional texture application failed, developing alternative approaches that maintain functionality while improving performance</li>
             <li><strong>Performance-First Design:</strong> Prioritizing simulation performance and stability while maintaining visual clarity and navigation functionality</li>
             <li><strong>Community-Focused Solutions:</strong> Developing solutions that are maintainable and extendable by the broader robotics community</li>
-          </ul>
+          </ul> -->
 
           <h2 id="challenges-and-solutions">Challenges and Breakthrough Solutions</h2>
 
@@ -350,7 +316,7 @@
           <ul>
             <li>Gazebo Harmonic's updated material system required different texture application approaches compared to Gazebo Classic</li>
             <li>Complex road geometry with multiple intersection points created UV mapping complications</li>
-            <li>Blender-based texture application attempts resulted in rendering artifacts that affected navigation testing</li>
+            <li>Blender-based texture application attempts did not produce fruitful results</li>
             <li>Performance implications of complex texture systems could have impacted simulation real-time requirements</li>
           </ul>
 
@@ -362,7 +328,7 @@
             <li><strong>Validation Success:</strong> Comprehensive testing confirmed navigation functionality and visual effectiveness</li>
           </ul>
 
-          <h3 id="system-integration-complexity">System Integration Complexity</h3>
+          <!-- <h3 id="system-integration-complexity">System Integration Complexity</h3>
           <p>The autonomous navigation world required integration of multiple complex systems, each with their own migration requirements and interdependencies.</p>
 
           <p><strong>Integration Challenges:</strong></p>
@@ -377,7 +343,7 @@
             <li>Systematic integration testing protocols to validate system interactions</li>
             <li>Comprehensive coordinate frame validation and correction procedures</li>
             <li>Performance benchmarking to ensure real-time simulation capability</li>
-          </ul>
+          </ul> -->
 
           <h2 id="project-completion-impact">Project Completion and Impact</h2>
 
@@ -389,7 +355,7 @@
             <li><strong>Obstacle Avoidance World:</strong> Successfully integrated into main repository with community adoption</li>
             <li><strong>F1 Ackermann Car:</strong> Complete texture solution with advanced mesh conversion techniques</li>
             <li><strong>Autoparking Systems:</strong> Multi-sensor integration with comprehensive navigation capabilities</li>
-            <li><strong>Autonomous Navigation Environment:</strong> Most complex migration featuring urban environments and advanced robotics platforms</li>
+            <li><strong>Autonomous Navigation Environment:</strong> Migration featuring environments and advanced robotics platforms</li>
           </ul>
 
           <p><strong>Technical Contributions:</strong></p>
@@ -410,26 +376,6 @@
             <li><strong>Technical Knowledge Transfer:</strong> Comprehensive documentation enables community members to apply our techniques independently</li>
           </ul>
 
-          <h2 id="technical-documentation">Technical Documentation and Knowledge Transfer</h2>
-
-          <h3 id="comprehensive-migration-guide">Comprehensive Migration Guide</h3>
-          <p>Week 7 included the completion of extensive technical documentation that enables community members to understand and apply our migration methodologies.</p>
-
-          <p><strong>Documentation Components:</strong></p>
-          <ul>
-            <li><strong>Migration Framework Documentation:</strong> Step-by-step procedures for systematic simulation migration</li>
-            <li><strong>Mesh Conversion Guides:</strong> Detailed instructions for using Assimp tools and conversion workflows</li>
-            <li><strong>Troubleshooting Procedures:</strong> Common challenge identification and resolution strategies</li>
-            <li><strong>Performance Optimization Guides:</strong> Best practices for maintaining simulation performance during migration</li>
-          </ul>
-
-          <h3 id="community-resources">Community Resources Development</h3>
-          <ul>
-            <li>Example migration projects with complete source code and documentation</li>
-            <li>Testing and validation procedures that community members can adapt for their own projects</li>
-            <li>Performance benchmarking tools for evaluating migration success</li>
-            <li>Community support frameworks for ongoing collaboration and development</li>
-          </ul>
 
           <h2 id="reflection-and-future-impact">Reflection and Future Impact</h2>
           <p>Week 7's completion of our GSoC project represents not just the successful migration of complex simulation environments, but the establishment of comprehensive frameworks and methodologies that will continue to benefit the robotics community long beyond the scope of this project.</p>
@@ -439,14 +385,12 @@
             <li>Successfully migrated simulation environments spanning the full complexity spectrum from basic models to sophisticated multi-system environments</li>
             <li>Developed innovative solutions to challenging technical problems, including texture implementation and mesh conversion challenges</li>
             <li>Established performance optimization standards that maintain real-time simulation requirements</li>
-            <li>Created comprehensive testing and validation frameworks ensuring migration reliability</li>
           </ul>
 
           <p><strong>Innovation and Problem-Solving:</strong></p>
           <ul>
             <li>Demonstrated adaptability and creative thinking when conventional approaches proved insufficient</li>
             <li>Developed alternative solutions that often provided superior performance compared to original implementations</li>
-            <li>Created reusable frameworks and tools that enable community members to tackle their own migration challenges</li>
           </ul>
 
           <p><strong>Community Impact and Legacy:</strong></p>
@@ -468,13 +412,6 @@
           <h2 id="final-acknowledgments">Final Acknowledgments and Future Directions</h2>
           <p>The successful completion of this GSoC project would not have been possible without the support and guidance of the JdeRobot community, Google Summer of Code program, and the broader robotics community. The collaborative nature of open-source development enabled innovative solutions and comprehensive testing that greatly enhanced the quality and impact of our work.</p>
 
-          <p><strong>Future Directions:</strong></p>
-          <ul>
-            <li><strong>Continued Community Contribution:</strong> Ongoing support for community members adopting our migration methodologies</li>
-            <li><strong>Framework Enhancement:</strong> Continued development and refinement of migration tools based on community feedback</li>
-            <li><strong>Educational Expansion:</strong> Development of additional educational resources and tutorials</li>
-            <li><strong>Research Collaboration:</strong> Support for research projects utilizing our migrated simulation environments</li>
-          </ul>
 
           <p>Week 7 represents the culmination of an intensive, rewarding, and impactful GSoC journey. The technical challenges overcome, innovative solutions developed, and community contributions established provide a strong foundation for continued growth and impact in the robotics simulation community. The experience has been transformational both personally and professionally, establishing lasting connections and creating valuable resources that will continue to benefit the community for years to come.</p>
 
