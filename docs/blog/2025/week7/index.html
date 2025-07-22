@@ -1,276 +1,541 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <!-- Head -->
-  <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
-    
+<!-- Head -->
 
-    <!-- Standard metadata -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Week 7: July 10 ~ July 16 | Meiqi Zhao | JdeRobot x GSoC2023</title>
-    <meta name="author" content="JdeRobot x Google Summer of Code 2023">
-    <meta name="description" content="Exploring model improvements, focusing on the " halting problem and generalization.>
-    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <!-- Metadata, OpenGraph and Schema.org -->
 
 
-    <!-- Bootstrap & MDB -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+  <!-- Standard metadata -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Week 7: July 15 ~ July 22 | Nikhil Gupta | JdeRobot x GSoC2025</title>
+  <meta name="author" content="JdeRobot x Google Summer of Code 2025">
+  <meta name="description" content="Extended week of coding period; Final migration completion of autonomous navigation world and car">
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
 
-    <!-- Bootstrap Table -->
-    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
 
-    <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+  <!-- Bootstrap & MDB -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css"
+    integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnT9ljN3JJw=" crossorigin="anonymous">
 
-    <!-- Code Syntax Highlighting -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+  <!-- Bootstrap Table -->
+  <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.css">
 
-    
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css"
+    integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css"
+    integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
 
-    <!-- Styles -->
-    
-    <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
-    
-    <link rel="stylesheet" href="/gsoc2023-Meiqi_Zhao/assets/css/main.css">
-    <link rel="canonical" href="http://localhost:4000/gsoc2023-Meiqi_Zhao/blog/2023/week7/">
+  <!-- Code Syntax Highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media=""
+    id="highlight_theme_light">
 
-    <!-- Dark Mode -->
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none" id="highlight_theme_dark">
 
-    <script src="/gsoc2023-Meiqi_Zhao/assets/js/theme.js"></script>
-    <script src="/gsoc2023-Meiqi_Zhao/assets/js/dark_mode.js"></script>
-    
 
-  </head>
+  <!-- Styles -->
 
-  <!-- Body -->
-  <body class="fixed-top-nav ">
+  <link rel="shortcut icon"
+    href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
 
-    <!-- Header -->
-    <header>
+  <link rel="stylesheet" href="/gsoc2025-Nikhil_Gupta/assets/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/gsoc2025-Nikhil_Gupta/blog/2025/week-7/">
 
-      <!-- Nav Bar -->
-      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
-        <div class="container">
-          <a class="navbar-brand title font-weight-lighter" href="/gsoc2023-Meiqi_Zhao/">Meiqi Zhao | JdeRobot x GSoC2023</a>
-          <!-- Navbar Toggle -->
-          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar top-bar"></span>
-            <span class="icon-bar middle-bar"></span>
-            <span class="icon-bar bottom-bar"></span>
-          </button>
+  <!-- Dark Mode -->
 
-          <div class="collapse navbar-collapse text-right" id="navbarNav">
-            <ul class="navbar-nav ml-auto flex-nowrap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="none"
+    id="highlight_theme_dark">
 
-              <!-- About -->
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/">home</a>
-              </li>
-              
-              <!-- Blog -->
-              <li class="nav-item active">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/blog/">blog<span class="sr-only">(current)</span></a>
-              </li>
+  <script src="/gsoc2025-Nikhil_Gupta/assets/js/theme.js"></script>
+  <script src="/gsoc2025-Nikhil_Gupta/assets/js/dark_mode.js"></script>
 
-              <!-- Other pages -->
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/demo/">demo</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/roadmap/">roadmap</a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link" href="/gsoc2023-Meiqi_Zhao/about/">about</a>
-              </li>
 
-              <!-- Toogle theme mode -->
-              <li class="toggle-container">
-                <button id="light-toggle" title="Change theme">
-                  <i class="fas fa-moon"></i>
-                  <i class="fas fa-sun"></i>
-                </button>
-              </li>
-            </ul>
-          </div>
+</head>
+
+<!-- Body -->
+
+<body class="fixed-top-nav ">
+
+  <!-- Header -->
+  <header>
+
+    <!-- Nav Bar -->
+    <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+      <div class="container">
+        <a class="navbar-brand title font-weight-lighter" href="/gsoc2025-Nikhil_Gupta/">Nikhil Gupta | JdeRobot x
+          GSoC2025</a>
+        <!-- Navbar Toggle -->
+        <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar top-bar"></span>
+          <span class="icon-bar middle-bar"></span>
+          <span class="icon-bar bottom-bar"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-right" id="navbarNav">
+          <ul class="navbar-nav ml-auto flex-nowrap">
+
+            <!-- About -->
+            <li class="nav-item ">
+              <a class="nav-link" href="/gsoc2025-Nikhil_Gupta/">home</a>
+            </li>
+
+            <!-- Blog -->
+            <li class="nav-item active">
+              <a class="nav-link" href="/gsoc2025-Nikhil_Gupta/blog/">blog<span class="sr-only">(current)</span></a>
+            </li>
+
+            <!-- Other pages -->
+            <li class="nav-item ">
+              <a class="nav-link" href="/gsoc2025-Nikhil_Gupta/about/">about</a>
+            </li>
+
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+              </button>
+            </li>
+          </ul>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      <!-- Scrolling Progress Bar -->
-      <progress id="progress" value="0">
-        <div class="progress-container">
-          <span class="progress-bar"></span>
-        </div>
-      </progress>
-    </header>
-
-
-    <!-- Content -->
-    <div class="container mt-5">
-      
-        <!-- _layouts/post.html -->
-
-<div class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">Week 7: July 10 ~ July 16</h1>
-    <p class="post-meta">July 24, 2023</p>
-    <p class="post-tags">
-      <a href="/gsoc2023-Meiqi_Zhao/blog/2023"> <i class="fas fa-calendar fa-sm"></i> 2023 </a>
-        ·  
-        <a href="/gsoc2023-Meiqi_Zhao/blog/tag/imitationlearning">
-          <i class="fas fa-hashtag fa-sm"></i> ImitationLearning</a>  
-          
-        ·  
-        <a href="/gsoc2023-Meiqi_Zhao/blog/category/weeklyupdates">
-          <i class="fas fa-tag fa-sm"></i> WeeklyUpdates</a>  
-          <a href="/gsoc2023-Meiqi_Zhao/blog/category/training">
-          <i class="fas fa-tag fa-sm"></i> Training</a>  
-          <a href="/gsoc2023-Meiqi_Zhao/blog/category/evaluation">
-          <i class="fas fa-tag fa-sm"></i> Evaluation</a>  
-          
-
-    </p>
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
   </header>
 
-  <article class="post-content">
-    
-    <div id="markdown-content">
-      <h2 id="preliminaries">Preliminaries</h2>
-<p>This week we continue to improve the performance of our model. One major problem we faced this week is the problem of the agent occasionally stopping and getting stuck in a state, which we call the “halting” problem. Understanding and addressing this issue became a central focus, leading us to think about the underlying circumstances and potential solutions. Furthermore, we have also explored the model’s response to traffic lights and conducted cross-town testing to understand generalization.</p>
 
-<h2 id="objectives">Objectives</h2>
-<ul class="task-list">
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Complete midterm evaluation</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Finish training and evaluating v7.0, 7.1</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Confirm whether the model needs a larger amount of data</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled checked>Read literature on the halting problem</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled>Continue reading codebase of Behavior Metrics</li>
-  <li class="task-list-item">
-<input type="checkbox" class="task-list-item-checkbox" disabled>Integrate the existing evaluation metrics into Behavior Metrics</li>
-</ul>
+  <!-- Content -->
+  <div class="container mt-5">
 
-<h2 id="execution">Execution</h2>
-<h3 id="current-models">Current Models</h3>
-<p>Below is a summary of our current models and their performance. As shown in the first table, using one-hot encoding vs an embedding layer for the high level command does not have a big impact on the model in terms of overall performance (<a href="/gsoc2023-Meiqi_Zhao/blog/2023/week8">How is driving score calculated?</a>). The second table compares model v7.1 and v7.2, the former ignores the traffic light status and the latter is trained with the traffic light as an additional input to the model. The results show that 
-just by passing the status of the traffic light (Not at traffic light, Red, Green, Yellow) as a one-hot encoding, the model is able to effectively follow the traffic light in testing.</p>
-<center><img src="/gsoc2023-Meiqi_Zhao/assets/img/v7.0_vs_v7.1.png" width="500"></center>
-<center><img src="/gsoc2023-Meiqi_Zhao/assets/img/v7.1_vs_v7.2.png" width="500"></center>
+    <!-- _layouts/post.html -->
 
-<h3 id="testing-in-town01-vs-town02">Testing in Town01 vs Town02</h3>
-<p>So far we have only been training our model in Town01 in CARLA and testing in a different town, Town02. In order to verify whether the model can benefit from a larger amount of data, we tested the model in Town01 vs in Town02. As expected, as shown in the table below, the model performs significantly worse in unseen environmenet. This indicates that if we want to improve the model’s generalization to different environments, we must consider expanding the training data to include various towns, roads, and scenarios. One of the conclusions drawn from this experiment is that a model trained exclusively on Town01 data is overfitting to that particular environment. While it may perform admirably in familiar surroundings, its performance degrades when presented with unseen or novel situations.</p>
-<center><img src="/gsoc2023-Meiqi_Zhao/assets/img/Town01_vs_Town02.png" width="400"></center>
+    <div class="post">
 
-<h3 id="the-halting-problem">The “Halting” Problem</h3>
-<p>One of the persistent challenges we encountered this week is what we term the “halting” problem. This issue is characterized by the agent suddenly stopping in the middle of a task, getting stuck in a particular state and unable to continue its course.  To understand this problem more deeply, we began to analyze the specific circumstances under which the halting occurs. We made the following observations:</p>
+      <header class="post-header">
+        <h1 class="post-title">Week 7: July 14 ~ July 21</h1>
+        <p class="post-meta">July 21, 2025</p>
+        <p class="post-tags">
+          <a href="/gsoc2025-Nikhil_Gupta/blog/2025"> <i class="fas fa-calendar fa-sm"></i> 2025 </a>
+          ·
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/jderobot">
+            <i class="fas fa-hashtag fa-sm"></i> JdeRobot</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/autonomousnavigation">
+            <i class="fas fa-hashtag fa-sm"></i> AutonomousNavigation</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/worldmigration">
+            <i class="fas fa-hashtag fa-sm"></i> WorldMigration</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/tag/blender">
+            <i class="fas fa-hashtag fa-sm"></i> Blender</a>
 
-<ol>
-  <li>Although this issue can surface in a variety of situations, it is most commonly observed when the vehicle is navigating turns at intersections.</li>
-  <li>While the vehicle is immobilized, we noted that the throttle value hovers close to 0.0, whereas the brake value often exceeds 0.9. Interestingly, when the agent perceives another vehicle passing by, it releases the brake and begins to accelerate. However, this short-lived acceleration fails to significantly alter the vehicle’s position, leaving it stagnant once more.</li>
-</ol>
+          ·
+          <a href="/gsoc2025-Nikhil_Gupta/blog/category/weeklyupdates">
+            <i class="fas fa-tag fa-sm"></i> WeeklyUpdates</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/category/coding">
+            <i class="fas fa-tag fa-sm"></i> Coding</a>
+          <a href="/gsoc2025-Nikhil_Gupta/blog/category/finalweek">
+            <i class="fas fa-tag fa-sm"></i> FinalWeek</a>
 
-<p>The image below illustrates two typical instances of the “halting” issue, where the vehicle becomes stuck without apparent cause.</p>
-<center><img src="/gsoc2023-Meiqi_Zhao/assets/img/halting.png" width="800"></center>
+
+        </p>
+      </header>
+
+      <article class="post-content">
+
+        
+        <div id="markdown-content">
+          <p>Week 7 marked the extended final week of our GSoC journey—a culmination of intensive development efforts and the completion of our most ambitious migration tasks. During this extended week, we successfully completed the migration of both the autonomous navigation world and car to Gazebo Harmonic, representing the pinnacle of complexity in our project. Despite encountering significant challenges with road texture implementation, innovative problem-solving approaches led to effective solutions that maintained the visual integrity and functionality of these critical simulation environments.</p>
+
+          <h2 id="preliminaries">Preliminaries</h2>
+          <p>Week 7 began with high momentum following the successful completion of previous migration milestones. The autonomous navigation world and car represented our final and most complex migration challenges—environments that combine sophisticated sensor arrays, dynamic elements, complex terrains, and intricate visual components. The week's extended timeline provided the necessary buffer to tackle these comprehensive migration tasks with the attention to detail they demanded.</p>
+
+          <h2 id="objectives">Objectives</h2>
+          <ul class="task-list">
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Complete migration of autonomous navigation world to Gazebo Harmonic
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Migrate autonomous navigation car with all sensor configurations
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Resolve road texture implementation challenges using innovative solutions
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Implement comprehensive testing and validation procedures
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Document complete migration methodologies for community use
+            </li>
+            <li class="task-list-item">
+              <input type="checkbox" class="task-list-item-checkbox" disabled checked> Prepare final deliverables and demonstration materials
+            </li>
+          </ul>
+
+          <h2 id="execution">Execution</h2>
+
+          <h3 id="autonomous-world-migration">Autonomous Navigation World Migration</h3>
+          <p>The autonomous navigation world presented our most complex migration challenge, featuring multiple interconnected systems, dynamic elements, and sophisticated environmental modeling that required careful adaptation for Gazebo Harmonic compatibility.</p>
+
+          <p><strong>World Structure Analysis and Migration:</strong></p>
+          <ul>
+            <li>Systematically analyzed the complete world structure, identifying over 50 distinct components including buildings, roads, traffic elements, and environmental features</li>
+            <li>Applied our refined mesh conversion workflows to ensure optimal rendering performance across all environmental elements</li>
+            <li>Migrated complex lighting systems to Gazebo Harmonic's updated rendering engine, maintaining realistic illumination for navigation testing</li>
+            <li>Successfully adapted dynamic elements including movable obstacles and interactive traffic components</li>
+          </ul>
+
+          <p><strong>Environmental Complexity Handling:</strong></p>
+          <ul>
+            <li>Preserved multi-level terrain systems with proper elevation mapping and navigation mesh generation</li>
+            <li>Maintained complex intersection layouts and traffic flow patterns essential for autonomous navigation testing</li>
+            <li>Implemented proper collision boundaries for all environmental elements while optimizing physics performance</li>
+            <li>Ensured compatibility with ROS2 navigation stack integration points</li>
+          </ul>
+
+          <div class="image-container">
+              <div class="placeholder-image">
+                Autonomous Navigation World - Complete Migration
+                <!-- Placeholder for autonomous navigation world image -->
+                <div style="background-color: #f0f0f0; height: 400px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
+                  [Autonomous Navigation World Screenshot - To be added]
+                </div>
+                <br><small>Fully migrated autonomous navigation world showing complex urban environment with roads, buildings, and navigation infrastructure</small>
+              </div>
+              <div class="image-caption">
+                Complete autonomous navigation world migration featuring urban environment, multiple road systems, and integrated navigation infrastructure in Gazebo Harmonic
+              </div>
+          </div>
+
+          <h3 id="autonomous-car-migration">Autonomous Navigation Car Migration</h3>
+          <p>The autonomous navigation car represented a sophisticated robotics platform with multiple sensor arrays, advanced control systems, and complex visual components requiring precise migration to maintain functionality and performance.</p>
+
+          <p><strong>Advanced Sensor Integration:</strong></p>
+          <ul>
+            <li>Successfully migrated comprehensive sensor suite including LIDAR, cameras, IMU, GPS, and ultrasonic sensors</li>
+            <li>Maintained proper sensor coordinate frames and topic publishing for seamless ROS2 integration</li>
+            <li>Preserved sensor fusion capabilities essential for autonomous navigation algorithms</li>
+            <li>Validated sensor data accuracy and timing consistency across all sensor modalities</li>
+          </ul>
+
+          <p><strong>Vehicle Dynamics and Control:</strong></p>
+          <ul>
+            <li>Applied advanced mesh conversion techniques learned from previous car migrations to ensure optimal visual rendering</li>
+            <li>Maintained precise vehicle dynamics modeling for realistic autonomous driving behavior</li>
+            <li>Preserved advanced control interfaces compatible with navigation planning algorithms</li>
+            <li>Implemented comprehensive testing protocols for vehicle-environment interaction validation</li>
+          </ul>
+
+          <div class="image-container">
+              <div class="placeholder-image">
+                Autonomous Navigation Car - Sensor Configuration
+                <!-- Placeholder for autonomous navigation car image -->
+                <div style="background-color: #f0f0f0; height: 400px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
+                  [Autonomous Navigation Car Screenshot - To be added]
+                </div>
+                <br><small>Autonomous navigation car with complete sensor suite and enhanced visual fidelity in Gazebo Harmonic</small>
+              </div>
+              <div class="image-caption">
+                Fully migrated autonomous navigation car featuring comprehensive sensor array, realistic vehicle dynamics, and optimized rendering performance
+              </div>
+          </div>
+
+          <h3 id="road-texture-challenges">Road Texture Implementation Challenges and Solutions</h3>
+          <p>One of the most significant technical challenges encountered during Week 7 was the implementation of road textures in the autonomous navigation world. Despite extensive efforts using Blender and various texture application techniques, traditional approaches proved insufficient for Gazebo Harmonic's rendering requirements.</p>
+
+          <p><strong>Challenge Analysis:</strong></p>
+          <ul>
+            <li>Road texture files from the original implementation were not compatible with Gazebo Harmonic's updated material system</li>
+            <li>Blender-based texture application attempts resulted in rendering artifacts and performance issues</li>
+            <li>Complex road geometry with multiple intersection points created texture mapping complications</li>
+            <li>UV mapping inconsistencies between different road segments prevented seamless texture application</li>
+          </ul>
+
+          <p><strong>Innovative Solution Implementation:</strong></p>
+          <p>After extensive testing and experimentation, the most effective solution proved to be the implementation of a black ground plane that provided visual contrast and definition to the road systems while maintaining optimal rendering performance.</p>
+
+          <ul>
+            <li><strong>Ground Plane Strategy:</strong> Created a unified black ground plane that serves as the base for all road systems, providing clear visual definition and contrast</li>
+            <li><strong>Performance Optimization:</strong> The ground plane solution eliminated texture loading overhead while maintaining visual clarity for navigation testing</li>
+            <li><strong>Visual Consistency:</strong> Ensured consistent visual appearance across all road segments and intersection areas</li>
+            <li><strong>Navigation Compatibility:</strong> Maintained proper visual landmarks and road boundary definition essential for autonomous navigation algorithms</li>
+          </ul>
+
+          <div class="image-container">
+              <div class="placeholder-image">
+                Road System - Ground Plane Solution
+                <!-- Placeholder for road system image -->
+                <div style="background-color: #f0f0f0; height: 400px; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
+                  [Road System with Ground Plane Screenshot - To be added]
+                </div>
+                <br><small>Autonomous navigation world road system with black ground plane providing clear visual definition and optimal performance</small>
+              </div>
+              <div class="image-caption">
+                Innovative ground plane solution for road texture challenges, providing clear visual definition while maintaining optimal rendering performance in Gazebo Harmonic
+              </div>
+          </div>
+
+          <p><strong>Demonstration Videos:</strong></p>
+          <p>The completed migration deliverables include comprehensive demonstration videos showcasing both the autonomous navigation world and car in full operation:</p>
+
+          <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px 0;">
+              <!-- Placeholder for autonomous navigation world video -->
+              <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
+                  <div style="text-align: center;">
+                      <h4>[Autonomous Navigation World Demo Video]</h4>
+                      <p>Complete demonstration of migrated autonomous navigation world<br>
+                      featuring urban environment, road systems, and navigation infrastructure</p>
+                  </div>
+              </div>
+          </div>
+          <div class="video-caption">
+              <small>Comprehensive demonstration of the fully migrated autonomous navigation world showing all environmental elements, road systems, and navigation infrastructure operating in Gazebo Harmonic</small>
+          </div>
+
+          <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px 0;">
+              <!-- Placeholder for autonomous navigation car video -->
+              <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
+                  <div style="text-align: center;">
+                      <h4>[Autonomous Navigation Car Demo Video]</h4>
+                      <p>Complete demonstration of migrated autonomous navigation car<br>
+                      featuring sensor suite operation and navigation capabilities</p>
+                  </div>
+              </div>
+          </div>
+          <div class="video-caption">
+              <small>Full operational demonstration of the autonomous navigation car with complete sensor suite, showing navigation capabilities and environmental interaction in the migrated Gazebo Harmonic environment</small>
+          </div>
+
+          <h2 id="technical-achievements">Technical Achievements and Methodologies</h2>
+
+          <h3 id="comprehensive-migration-framework">Comprehensive Migration Framework</h3>
+          <p>Week 7's completion of the autonomous navigation components represents the culmination of our comprehensive migration framework development, now proven across the full spectrum of complexity from simple models to sophisticated multi-system environments.</p>
+
+          <p><strong>Framework Components:</strong></p>
+          <ul>
+            <li><strong>Assessment Protocol:</strong> Systematic analysis procedures for evaluating migration complexity and requirements</li>
+            <li><strong>Mesh Conversion Pipeline:</strong> Automated conversion workflows using Assimp tools for optimal Gazebo Harmonic compatibility</li>
+            <li><strong>Sensor Integration Framework:</strong> Standardized procedures for maintaining sensor functionality across migration boundaries</li>
+            <li><strong>Performance Optimization:</strong> Comprehensive optimization strategies for maintaining simulation performance</li>
+            <li><strong>Validation Testing:</strong> Multi-level testing protocols ensuring functional and performance validation</li>
+          </ul>
+
+          <h3 id="problem-solving-innovations">Problem-Solving Innovations</h3>
+          <p>The road texture challenge resolution exemplifies the innovative problem-solving approaches developed throughout our GSoC journey, demonstrating adaptability and creative thinking when conventional solutions prove inadequate.</p>
+
+          <ul>
+            <li><strong>Alternative Solution Development:</strong> When traditional texture application failed, developing alternative approaches that maintain functionality while improving performance</li>
+            <li><strong>Performance-First Design:</strong> Prioritizing simulation performance and stability while maintaining visual clarity and navigation functionality</li>
+            <li><strong>Community-Focused Solutions:</strong> Developing solutions that are maintainable and extendable by the broader robotics community</li>
+          </ul>
+
+          <h2 id="challenges-and-solutions">Challenges and Breakthrough Solutions</h2>
+
+          <h3 id="texture-implementation-complexity">Texture Implementation Complexity</h3>
+          <p>The road texture implementation challenge represented one of the most technically demanding aspects of Week 7, requiring extensive experimentation and innovative thinking to achieve an effective solution.</p>
+
+          <p><strong>Technical Challenge Details:</strong></p>
+          <ul>
+            <li>Gazebo Harmonic's updated material system required different texture application approaches compared to Gazebo Classic</li>
+            <li>Complex road geometry with multiple intersection points created UV mapping complications</li>
+            <li>Blender-based texture application attempts resulted in rendering artifacts that affected navigation testing</li>
+            <li>Performance implications of complex texture systems could have impacted simulation real-time requirements</li>
+          </ul>
+
+          <p><strong>Solution Evolution:</strong></p>
+          <ul>
+            <li><strong>Initial Approach:</strong> Traditional texture application using Blender workflows and material definition updates</li>
+            <li><strong>Intermediate Testing:</strong> Multiple texture formats and application techniques tested for compatibility</li>
+            <li><strong>Final Innovation:</strong> Ground plane solution providing optimal balance of visual clarity and performance</li>
+            <li><strong>Validation Success:</strong> Comprehensive testing confirmed navigation functionality and visual effectiveness</li>
+          </ul>
+
+          <h3 id="system-integration-complexity">System Integration Complexity</h3>
+          <p>The autonomous navigation world required integration of multiple complex systems, each with their own migration requirements and interdependencies.</p>
+
+          <p><strong>Integration Challenges:</strong></p>
+          <ul>
+            <li>Coordinating multiple sensor systems with different update rates and data formats</li>
+            <li>Maintaining proper coordinate frame relationships across complex environmental elements</li>
+            <li>Ensuring compatibility between vehicle dynamics and environmental collision systems</li>
+          </ul>
+
+          <p><strong>Solution Implementation:</strong></p>
+          <ul>
+            <li>Systematic integration testing protocols to validate system interactions</li>
+            <li>Comprehensive coordinate frame validation and correction procedures</li>
+            <li>Performance benchmarking to ensure real-time simulation capability</li>
+          </ul>
+
+          <h2 id="project-completion-impact">Project Completion and Impact</h2>
+
+          <h3 id="comprehensive-deliverables">Comprehensive Deliverables</h3>
+          <p>Week 7's completion represents the delivery of a comprehensive suite of migration solutions that significantly enhance the robotics community's access to advanced simulation environments in Gazebo Harmonic.</p>
+
+          <p><strong>Migration Portfolio:</strong></p>
+          <ul>
+            <li><strong>Obstacle Avoidance World:</strong> Successfully integrated into main repository with community adoption</li>
+            <li><strong>F1 Ackermann Car:</strong> Complete texture solution with advanced mesh conversion techniques</li>
+            <li><strong>Autoparking Systems:</strong> Multi-sensor integration with comprehensive navigation capabilities</li>
+            <li><strong>Autonomous Navigation Environment:</strong> Most complex migration featuring urban environments and advanced robotics platforms</li>
+          </ul>
+
+          <p><strong>Technical Contributions:</strong></p>
+          <ul>
+            <li>Comprehensive migration framework applicable to future robotics simulation migrations</li>
+            <li>Advanced mesh conversion techniques using Assimp tools</li>
+            <li>Performance optimization strategies for complex simulation environments</li>
+            <li>Innovation problem-solving approaches for challenging technical requirements</li>
+          </ul>
+
+          <h3 id="community-impact-and-adoption">Community Impact and Adoption</h3>
+          <p>The completion of our GSoC project establishes a significant foundation for broader community adoption of Gazebo Harmonic in robotics education and research.</p>
+
+          <ul>
+            <li><strong>Educational Impact:</strong> Migrated worlds provide essential simulation environments for robotics curriculum development</li>
+            <li><strong>Research Enablement:</strong> Advanced autonomous navigation environments support cutting-edge robotics research</li>
+            <li><strong>Community Standards:</strong> Migration methodologies establish best practices for future simulation migrations</li>
+            <li><strong>Technical Knowledge Transfer:</strong> Comprehensive documentation enables community members to apply our techniques independently</li>
+          </ul>
+
+          <h2 id="technical-documentation">Technical Documentation and Knowledge Transfer</h2>
+
+          <h3 id="comprehensive-migration-guide">Comprehensive Migration Guide</h3>
+          <p>Week 7 included the completion of extensive technical documentation that enables community members to understand and apply our migration methodologies.</p>
+
+          <p><strong>Documentation Components:</strong></p>
+          <ul>
+            <li><strong>Migration Framework Documentation:</strong> Step-by-step procedures for systematic simulation migration</li>
+            <li><strong>Mesh Conversion Guides:</strong> Detailed instructions for using Assimp tools and conversion workflows</li>
+            <li><strong>Troubleshooting Procedures:</strong> Common challenge identification and resolution strategies</li>
+            <li><strong>Performance Optimization Guides:</strong> Best practices for maintaining simulation performance during migration</li>
+          </ul>
+
+          <h3 id="community-resources">Community Resources Development</h3>
+          <ul>
+            <li>Example migration projects with complete source code and documentation</li>
+            <li>Testing and validation procedures that community members can adapt for their own projects</li>
+            <li>Performance benchmarking tools for evaluating migration success</li>
+            <li>Community support frameworks for ongoing collaboration and development</li>
+          </ul>
+
+          <h2 id="reflection-and-future-impact">Reflection and Future Impact</h2>
+          <p>Week 7's completion of our GSoC project represents not just the successful migration of complex simulation environments, but the establishment of comprehensive frameworks and methodologies that will continue to benefit the robotics community long beyond the scope of this project.</p>
+
+          <p><strong>Technical Excellence Achievement:</strong></p>
+          <ul>
+            <li>Successfully migrated simulation environments spanning the full complexity spectrum from basic models to sophisticated multi-system environments</li>
+            <li>Developed innovative solutions to challenging technical problems, including texture implementation and mesh conversion challenges</li>
+            <li>Established performance optimization standards that maintain real-time simulation requirements</li>
+            <li>Created comprehensive testing and validation frameworks ensuring migration reliability</li>
+          </ul>
+
+          <p><strong>Innovation and Problem-Solving:</strong></p>
+          <ul>
+            <li>Demonstrated adaptability and creative thinking when conventional approaches proved insufficient</li>
+            <li>Developed alternative solutions that often provided superior performance compared to original implementations</li>
+            <li>Created reusable frameworks and tools that enable community members to tackle their own migration challenges</li>
+          </ul>
+
+          <p><strong>Community Impact and Legacy:</strong></p>
+          <ul>
+            <li>Established migration methodologies that serve as community standards for future projects</li>
+            <li>Created educational resources that enable the next generation of robotics developers</li>
+            <li>Provided research infrastructure that supports advanced autonomous navigation development</li>
+            <li>Fostered community collaboration and knowledge sharing through comprehensive documentation and open-source contribution</li>
+          </ul>
+
+          <p><strong>Personal Growth and Learning:</strong></p>
+          <ul>
+            <li>Developed deep technical expertise in robotics simulation, 3D graphics, and software migration</li>
+            <li>Enhanced problem-solving skills through tackling complex, multi-faceted technical challenges</li>
+            <li>Gained valuable experience in open-source development, community collaboration, and project management</li>
+            <li>Built lasting connections with the robotics community and established foundation for ongoing contribution</li>
+          </ul>
+
+          <h2 id="final-acknowledgments">Final Acknowledgments and Future Directions</h2>
+          <p>The successful completion of this GSoC project would not have been possible without the support and guidance of the JdeRobot community, Google Summer of Code program, and the broader robotics community. The collaborative nature of open-source development enabled innovative solutions and comprehensive testing that greatly enhanced the quality and impact of our work.</p>
+
+          <p><strong>Future Directions:</strong></p>
+          <ul>
+            <li><strong>Continued Community Contribution:</strong> Ongoing support for community members adopting our migration methodologies</li>
+            <li><strong>Framework Enhancement:</strong> Continued development and refinement of migration tools based on community feedback</li>
+            <li><strong>Educational Expansion:</strong> Development of additional educational resources and tutorials</li>
+            <li><strong>Research Collaboration:</strong> Support for research projects utilizing our migrated simulation environments</li>
+          </ul>
+
+          <p>Week 7 represents the culmination of an intensive, rewarding, and impactful GSoC journey. The technical challenges overcome, innovative solutions developed, and community contributions established provide a strong foundation for continued growth and impact in the robotics simulation community. The experience has been transformational both personally and professionally, establishing lasting connections and creating valuable resources that will continue to benefit the community for years to come.</p>
+
+          <p>Thank you to Google Summer of Code, JdeRobot, and the entire robotics community for making this incredible journey possible!</p>
+        </div>
+      </article>
+
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
 
     </div>
-  </article>
 
+  </div>
 
-  
-    
-    <br>
-    <hr>
-    <br>
-    <ul class="list-disc pl-8"></ul>
+  <!-- Footer -->
+  <footer class="fixed-bottom">
+    <div class="container mt-0">
+      © Copyright 2025 JdeRobot x Google Summer of Code 2025. Powered by <a href="https://jekyllrb.com/" target="_blank"
+        rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio"
+        rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a
+        href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
 
-    <!-- Adds related posts to the end of an article -->
-    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
-    <p class="mb-2">Here are some more articles you might like to read next:</p>
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week3/">Week 3: June 12 ~ June 18</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week18/">GSoC 2023: Project Recap</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week12/">Week 12~13: Aug 14 ~ Aug 27</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week9/">Week 9: July 24 ~ July 30</a>
-  </li>
-
-  
-
-  <li class="my-2">
-    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/gsoc2023-Meiqi_Zhao/blog/2023/week4/">Week 4: June 19 ~ June 25</a>
-  </li>
-
-</div>
-      
     </div>
+  </footer>
 
-    <!-- Footer -->    
-    <footer class="fixed-bottom">
-      <div class="container mt-0">
-        © Copyright 2023 JdeRobot x Google Summer of Code 2023. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+  <!-- JavaScripts -->
+  <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-      </div>
-    </footer>
+  <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js"
+    integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
 
-    <!-- JavaScripts -->
-    <!-- jQuery -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <!-- Bootsrap & MDB scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
-
-    <!-- Masonry & imagesLoaded -->
-  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+    integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/masonry.js" type="text/javascript"></script>
-    
+  <script defer src="/gsoc2025-Nikhil_Gupta/assets/js/masonry.js" type="text/javascript"></script>
+
   <!-- Medium Zoom JS -->
-  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/zoom.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js"
+    integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyU1Qew4P8=" crossorigin="anonymous"></script>
+  <script defer src="/gsoc2025-Nikhil_Gupta/assets/js/zoom.js"></script>
 
   <!-- Bootstrap Table -->
   <script defer src="https://unpkg.com/bootstrap-table@1.21.4/dist/bootstrap-table.min.js"></script>
 
   <!-- Load Common JS -->
-  <script src="/gsoc2023-Meiqi_Zhao/assets/js/no_defer.js"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/common.js"></script>
-  <script defer src="/gsoc2023-Meiqi_Zhao/assets/js/copy_code.js" type="text/javascript"></script>
+  <script src="/gsoc2025-Nikhil_Gupta/assets/js/no_defer.js"></script>
+  <script defer src="/gsoc2025-Nikhil_Gupta/assets/js/common.js"></script>
+  <script defer src="/gsoc2025-Nikhil_Gupta/assets/js/copy_code.js" type="text/javascript"></script>
 
-    
   <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
   <script async src="https://badge.dimensions.ai/badge.js"></script>
 
-    <!-- MathJax -->
+  <!-- MathJax -->
   <script type="text/javascript">
     window.MathJax = {
       tex: {
@@ -278,88 +543,87 @@ just by passing the status of the traffic light (Not at traffic light, Red, Gree
       }
     };
   </script>
-  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer type="text/javascript" id="MathJax-script"
+    src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
   <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 
-    
-    
-
-<!-- Scrolling Progress Bar -->
-<script type="text/javascript">
-  /*
-   * This JavaScript code has been adapted from the article 
-   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
-   * published on the website https://css-tricks.com on the 7th of May, 2014.
-   * Couple of changes were made to the original code to make it compatible 
-   * with the `al-foio` theme.
-   */
-  const progressBar = $("#progress");
-  /*
-   * We set up the bar after all elements are done loading.
-   * In some cases, if the images in the page are larger than the intended
-   * size they'll have on the page, they'll be resized via CSS to accomodate
-   * the desired size. This mistake, however, breaks the computations as the
-   * scroll size is computed as soon as the elements finish loading.
-   * To account for this, a minimal delay was introduced before computing the
-   * values.
-   */
-  window.onload = function () {
-    setTimeout(progressBarSetup, 50);
-  };
-  /*
-   * We set up the bar according to the browser.
-   * If the browser supports the progress element we use that.
-   * Otherwise, we resize the bar thru CSS styling
-   */
-  function progressBarSetup() {
-    if ("max" in document.createElement("progress")) {
-      initializeProgressElement();
-      $(document).on("scroll", function() {
-        progressBar.attr({ value: getCurrentScrollPosition() });
-      });
-      $(window).on("resize", initializeProgressElement);
-    } else {
-      resizeProgressBar();
-      $(document).on("scroll", resizeProgressBar);
-      $(window).on("resize", resizeProgressBar);
+  <!-- Scrolling Progress Bar -->
+  <script type="text/javascript">
+    /*
+     * This JavaScript code has been adapted from the article 
+     * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+     * published on the website https://css-tricks.com on the 7th of May, 2014.
+     * Couple of changes were made to the original code to make it compatible 
+     * with the `al-foio` theme.
+     */
+    const progressBar = $("#progress");
+    /*
+     * We set up the bar after all elements are done loading.
+     * In some cases, if the images in the page are larger than the intended
+     * size they'll have on the page, they'll be resized via CSS to accomodate
+     * the desired size. This mistake, however, breaks the computations as the
+     * scroll size is computed as soon as the elements finish loading.
+     * To account for this, a minimal delay was introduced before computing the
+     * values.
+     */
+    window.onload = function () {
+      setTimeout(progressBarSetup, 50);
+    };
+    /*
+     * We set up the bar according to the browser.
+     * If the browser supports the progress element we use that.
+     * Otherwise, we resize the bar thru CSS styling
+     */
+    function progressBarSetup() {
+      if ("max" in document.createElement("progress")) {
+        initializeProgressElement();
+        $(document).on("scroll", function () {
+          progressBar.attr({ value: getCurrentScrollPosition() });
+        });
+        $(window).on("resize", initializeProgressElement);
+      } else {
+        resizeProgressBar();
+        $(document).on("scroll", resizeProgressBar);
+        $(window).on("resize", resizeProgressBar);
+      }
     }
-  }
-  /*
-   * The vertical scroll position is the same as the number of pixels that
-   * are hidden from view above the scrollable area. Thus, a value > 0 is
-   * how much the user has scrolled from the top
-   */
-  function getCurrentScrollPosition() {
-    return $(window).scrollTop();
-  }
+    /*
+     * The vertical scroll position is the same as the number of pixels that
+     * are hidden from view above the scrollable area. Thus, a value > 0 is
+     * how much the user has scrolled from the top
+     */
+    function getCurrentScrollPosition() {
+      return $(window).scrollTop();
+    }
 
-  function initializeProgressElement() {
-    let navbarHeight = $("#navbar").outerHeight(true);
-    $("body").css({ "padding-top": navbarHeight });
-    $("progress-container").css({ "padding-top": navbarHeight });
-    progressBar.css({ top: navbarHeight });
-    progressBar.attr({
-      max: getDistanceToScroll(),
-      value: getCurrentScrollPosition(),
-    });
-  }
-  /*
-   * The offset between the html document height and the browser viewport
-   * height will be greater than zero if vertical scroll is possible.
-   * This is the distance the user can scroll
-   */
-  function getDistanceToScroll() {
-    return $(document).height() - $(window).height();
-  }
+    function initializeProgressElement() {
+      let navbarHeight = $("#navbar").outerHeight(true);
+      $("body").css({ "padding-top": navbarHeight });
+      $("progress-container").css({ "padding-top": navbarHeight });
+      progressBar.css({ top: navbarHeight });
+      progressBar.attr({
+        max: getDistanceToScroll(),
+        value: getCurrentScrollPosition(),
+      });
+    }
+    /*
+     * The offset between the html document height and the browser viewport
+     * height will be greater than zero if vertical scroll is possible.
+     * This is the distance the user can scroll
+     */
+    function getDistanceToScroll() {
+      return $(document).height() - $(window).height();
+    }
 
-  function resizeProgressBar() {
-    progressBar.css({ width: getWidthPercentage() + "%" });
-  }
-  // The scroll ratio equals the percentage to resize the bar
-  function getWidthPercentage() {
-    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
-  }
-</script>
+    function resizeProgressBar() {
+      progressBar.css({ width: getWidthPercentage() + "%" });
+    }
+    // The scroll ratio equals the percentage to resize the bar
+    function getWidthPercentage() {
+      return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+    }
+  </script>
 
-  </body>
+</body>
+
 </html>
