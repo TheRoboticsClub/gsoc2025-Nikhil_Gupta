@@ -32,7 +32,7 @@
     <!-- Code Syntax Highlighting -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
 
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 
     <!-- Styles -->
     
@@ -224,41 +224,6 @@
       </picture>
     </figure>
   </swiper-slide>
-</swiper-container>
-
-<swiper-container keyboard="true" navigation="true" pagination="true" pagination-clickable="true" pagination-dynamic-bullets="true" rewind="true">
-   <swiper-slide>
-
-<figure>
-  <picture>
-    <!-- Auto scaling with imagemagick -->
-    <!--
-      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
-      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
-    -->
-    
-    <img src="/gsoc2025-Nikhil_Gupta/assets/img/navigation_car.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-  </picture>
-
-  
-</figure>
-</swiper-slide>
-  <swiper-slide>
-
-<figure>
-  <picture>
-    <!-- Auto scaling with imagemagick -->
-    <!--
-      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
-      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
-    -->
-    
-    <img src="/gsoc2025-Nikhil_Gupta/assets/img/navigation_world.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
-  </picture>
-
-  
-</figure>
-</swiper-slide>
 </swiper-container>
 
 <p>This stage involved updating the drone-based exercise models and creating new SDF files for the worlds to ensure compatibility with the latest version of Gazebo. For models that were challenging to migrate and for which new open-source alternatives were available, I incorporated these new models. Adjustments were made to plugins, parameters, and configurations in the SDF files to align with the updated Gazebo setup.</p>
