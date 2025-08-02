@@ -182,12 +182,26 @@
 
 <p>JdeRobot’s Robotics-Academy provides exercises to learn robotics and AI while abstracting students from the complexities of the framework. The dockerized containers and web templates offer cross-platform functionality, simplifying the setup process. This allows beginners to focus on coding and testing their algorithms without dealing with extensive software installation.</p>
 
-<p>Currently, Robotics-Academy uses Gazebo11 in the Robotics-Academy Docker Image (RADI) framework. The primary goal of my project was to migrate the RADI to Gazebo Harmonic and update exercises accordingly. Also, I replaced PX4 with the lighter Aerostack2 Gazebo platform for drone-based exercises, enhancing efficiency.</p>
+<p>Currently, Robotics-Academy uses Gazebo Classic (Gazebo11) in the Robotics-Academy Docker Image (RADI) framework. The primary goal of my project was to migrate existing Gazebo Classic exercises and their associated models to Gazebo Harmonic, ensuring seamless compatibility and improved performance. My work focused on migrating four key automotive exercises: the Ackermann car with obstacle avoidance on the F1 circuit, the autoparking exercise with the Prius Ackermann car model, and the autonomous navigation exercise featuring the holonomic drive car.</p>
 
 <h3 id="contribution-summary">Contribution Summary</h3>
 <hr>
 
-<h4 id="stage-1-modifying-models-and-world-sdf-files">Stage 1: Modifying Models and World SDF Files</h4>
+<h4 id="stage-1-Migrating-Ackermann-Car-and-F1-Obstacle-Avoidance-Exercise">Stage 1: Migrating Ackermann Car and F1 Obstacle Avoidance Exercise</h4>
+
+<p>The first phase involved migrating the Ackermann car model and the F1 circuit obstacle avoidance exercise to Gazebo Harmonic. This required updating the vehicle's SDF files to comply with the new Gazebo format, modifying the physics parameters, and ensuring proper sensor integration. The F1 circuit world file was also updated to maintain compatibility with the new simulation environment while preserving the original exercise functionality.</p>
+
+<h4 id="stage-2-Autoparking-Exercise-Migration-with-Prius-Ackermann-Model">Stage 2: Autoparking Exercise Migration with Prius Ackermann Model</h4>
+
+<p>In this stage, I focused on migrating the autoparking exercise, which features the Prius Ackermann car model. This involved comprehensive updates to the vehicle's SDF structure, including modifications to the steering and drive mechanisms to work with Gazebo Harmonic's updated plugin system. The parking lot environment was also migrated, ensuring that all static obstacles and parking spaces maintained their proper collision detection and visual representation.</p>
+
+<h4 id="stage-3-Holonomic-Drive-Car-and-Autonomous-Navigation-Exercise">Stage 3: Holonomic Drive Car and Autonomous Navigation Exercise</h4>
+
+<p>The third phase centered on migrating the autonomous navigation exercise along with the holonomic drive car model. This required updating the omnidirectional drive system to work with Gazebo Harmonic's new joint and plugin architecture. The navigation environment, including waypoints, obstacles, and the underlying world structure, was thoroughly updated to ensure compatibility while maintaining the exercise's educational objectives.</p>
+
+<h4 id="stage-4-Integration-and-Testing">Stage 4: Integration and Testing</h4>
+
+<p>The final stage involved comprehensive testing of all migrated exercises, ensuring that the educational content remained intact while benefiting from Gazebo Harmonic's improved performance and features. I updated the launch files, verified sensor data compatibility, and ensured that the web-based interfaces continued to function seamlessly with the newly migrated models and worlds.</p>
 
 <swiper-container keyboard="true" navigation="true" pagination="true" pagination-clickable="true" pagination-dynamic-bullets="true" rewind="true">
   <swiper-slide>
@@ -227,20 +241,6 @@
   </swiper-slide>
 </swiper-container>
 
-<p>This stage involved updating the drone-based exercise models and creating new SDF files for the worlds to ensure compatibility with the latest version of Gazebo. For models that were challenging to migrate and for which new open-source alternatives were available, I incorporated these new models. Adjustments were made to plugins, parameters, and configurations in the SDF files to align with the updated Gazebo setup.</p>
-
-<h4 id="stage-2-installing-dependencies-and-updating-files">Stage 2: Installing Dependencies and Updating Files</h4>
-
-<p>In this stage, I installed Gazebo Harmonic within the Docker image to support the migration process. Given that most Robotics-Academy exercises are currently in Gazebo 11, I ensured compatibility by installing both Gazebo Harmonic and Gazebo 11. This approach allows exercises still using Gazebo 11 to remain operational. Additionally, I updated hooks for certain packages and modified files, such as the Robotics Application Manager file, to support the new Gazebo Sim exercises.</p>
-
-<h4 id="stage-3-modifying-the-database-and-adding-new-fields-for-gazebo-sim-exercises">Stage 3: Modifying the Database and Adding New Fields for Gazebo Sim Exercises</h4>
-
-<p>In Robotics-Academy, each exercise is represented as a database entry, including fields such as “visualisation” and “world”. These fields determine the launch files used by the Robotics Application Manager. I updated the Django model to include new options for “visualisation” and “world” specific to Gazebo Sim exercises. A new entry was also created for the Rescue People exercise, which was migrated to Gazebo Harmonic.</p>
-
-<h4 id="stage-4-creating-new-launchers-for-gazebo-sim-exercises">Stage 4: Creating New Launchers for Gazebo Sim Exercises</h4>
-
-<p>For the newly added “visualisation” and “world” fields related to Gazebo Sim exercises, I developed new launchers within the Robotics Application Manager. These launchers facilitate the launch of the Gazebo Sim GUI and server, along with the Aerostack2 launch file. The Aerostack2 launcher was updated to support Gazebo Sim and to replace PX4 with the Aerostack2 Gazebo Platform.</p>
-
 <h4 id="on-github">On GitHub</h4>
 
 <p>Over the summer, I submitted 14 pull requests, all of which have been merged. These pull requests addressed 12 issues, and my contributions will be incorporated into the upcoming releases of JdeRobot’s Robotics-Academy.</p>
@@ -250,12 +250,12 @@
       <tr>
         <td colspan="4"><a href="https://github.com/JdeRobot/RoboticsInfrastructure" rel="external nofollow noopener" target="_blank">Robotics Infrastructure</a></td>
       </tr>
-      <tr>
-          <th>Pull Request</th>
-          <th>Solves Issue</th>
-          <th>Description</th>
-          <th>More</th>
-      </tr>
+        <tr>
+            <th> Pull Request</th>
+            <th> Solves Issue</th>
+            <th> Description</th>
+            <th> More</th>
+        </tr>
     </thead>
     <tbody>
         <!-- <tr>
