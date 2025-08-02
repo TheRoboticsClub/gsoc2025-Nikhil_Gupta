@@ -189,19 +189,19 @@
 
 <h4 id="stage-1-Migrating-Ackermann-Car-and-F1-Obstacle-Avoidance-Exercise">Stage 1: Migrating Ackermann Car and F1 Obstacle Avoidance Exercise</h4>
 
-<p>The first phase involved migrating the Ackermann car model and the F1 circuit obstacle avoidance exercise to Gazebo Harmonic. This required updating the vehicle's SDF files to comply with the new Gazebo format, modifying the physics parameters, ensuring proper sensor integration and adding ackermann plugin gz-sim-ackermann-steering-system. The F1 obstacle circuit world file was also updated to maintain compatibility with the new simulation environment while preserving the original exercise functionality.</p>
+<p>The first phase involved migrating the Ackermann car model and the F1 circuit obstacle avoidance exercise to Gazebo Harmonic. This required updating the vehicle's SDF files to comply with the new Gazebo format, modifying the physics parameters, ensuring proper sensor integration and adding ackermann plugin gz-sim-ackermann-steering-system. The F1 obstacle circuit world file was also updated to maintain compatibility with the new simulation environment while preserving the original exercise functionality. One of the major issues faced during the migration was to add the appropriate collisions to the obstacles in gazebo harmonic. To solve this issue, we created an enclosing cuboid with exact dimensions as the obstacles which perfectly simulated the required collisions.</p>
 
 <h4 id="stage-2-Autoparking-Exercise-Migration-with-Prius-Ackermann-Model">Stage 2: Autoparking Exercise Migration with Prius Ackermann Model</h4>
 
-<p>In this stage, I focused on migrating the autoparking exercise, which features the Prius Ackermann car model. This involved comprehensive updates to the vehicle's SDF structure, including modifications to the steering and drive mechanisms to work with Gazebo Harmonic's updated plugin system. The parking lot environment was also migrated, ensuring that all static obstacles and parking spaces maintained their proper collision detection and visual representation.</p>
+<p>In this stage, I focused on migrating the autoparking exercise, which features the Prius Ackermann car model. This involved comprehensive updates to the vehicle's SDF structure and config files as well as the SDF structure of the other parked cars in the exercise, including modifications to the steering and drive mechanisms to work with Gazebo Harmonic's updated plugin system. The parking lot environment was also migrated, ensuring that all static obstacles and parking spaces maintained their proper collision detection and visual representation.</p>
 
 <h4 id="stage-3-Holonomic-Drive-Car-and-Autonomous-Navigation-Exercise">Stage 3: Holonomic Drive Car and Autonomous Navigation Exercise</h4>
 
-<p>The third phase centered on migrating the autonomous navigation exercise along with the holonomic drive car model. This required updating the omnidirectional drive system to work with Gazebo Harmonic's new joint and plugin architecture. The navigation environment, including waypoints, obstacles, and the underlying world structure, was thoroughly updated to ensure compatibility while maintaining the exercise's educational objectives.</p>
+<p>The third phase centered on migrating the autonomous navigation exercise along with the holonomic drive car model. This required updating the omnidirectional drive system to work with Gazebo Harmonic's new joint and plugin architecture using the plugin gz-sim-velocity-control-system. The navigation environment and the underlying world structure, was thoroughly updated to ensure compatibility while maintaining the exercise's educational objectives.</p>
 
 <h4 id="stage-4-Integration-and-Testing">Stage 4: Integration and Testing</h4>
 
-<p>The final stage involved comprehensive testing of all migrated exercises, ensuring that the educational content remained intact while benefiting from Gazebo Harmonic's improved performance and features. I updated the launch files, verified sensor data compatibility, and ensured that the web-based interfaces continued to function seamlessly with the newly migrated models and worlds.</p>
+<p>The final stage involved comprehensive testing of all migrated exercises, ensuring that the educational content remained intact while benefiting from Gazebo Harmonic's improved performance and features. I verified all the plugins, collisions and sensor data being publishedon the desired topics, ensuring the required functionality in all the newly migrated scenarios.</p>
 
 <swiper-container keyboard="true" navigation="true" pagination="true" pagination-clickable="true" pagination-dynamic-bullets="true" rewind="true">
   <swiper-slide>
